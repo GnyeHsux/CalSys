@@ -1,6 +1,6 @@
 package com.lcnet.lynn.controller;
 
-import com.lcnet.lynn.model.Users;
+import com.lcnet.lynn.model.ManUsers;
 import com.lcnet.lynn.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,8 +28,8 @@ public class HelloController {
 
     @RequestMapping("/login")
     public String login() {
-        List<Users> list = userService.findAll();
-        Users user = userService.findByAccAndPwd("1001", "123456");
+        List<ManUsers> list = userService.findAll();
+        ManUsers user = userService.findByAccAndPwd("1001", "123456");
         return "login";
     }
 

@@ -1,12 +1,15 @@
 package com.lcnet.lynn.controller;
 
 import com.lcnet.lynn.exception.MyException;
-import com.lcnet.lynn.model.Users;
+import com.lcnet.lynn.model.ManUsers;
+import com.lcnet.lynn.service.UserService;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.lang.reflect.Method;
 import java.util.*;
 
 /**
@@ -16,7 +19,9 @@ import java.util.*;
 @RequestMapping(value = "/users")
 public class UserController {
 
-    static Map<Integer, Users> users = Collections.synchronizedMap(new HashMap<Integer, Users>());
+    @Autowired
+    private UserService userService;
+   /* static Map<Integer, Users> users = Collections.synchronizedMap(new HashMap<Integer, Users>());
 
     @ApiOperation(value = "获取用户列表", notes = "")
     @RequestMapping(value = {""}, method = RequestMethod.GET)
@@ -60,5 +65,12 @@ public class UserController {
     public String deleteUser(@PathVariable Integer id) {
         users.remove(id);
         return "success";
-    }
+    }*/
+
+   @ApiOperation(value = "获取用户列表", notes = "")
+    @RequestMapping(method = RequestMethod.GET)
+    public List<ManUsers> getUserList() throws MyException{
+        List<ManUsers> list = userService.findAll();
+        return list;
+   }
 }

@@ -2,7 +2,7 @@ package com.lcnet.lynn.dao.impl;
 
 import com.lcnet.lynn.dao.BaseDaoImpl;
 import com.lcnet.lynn.dao.UserDao;
-import com.lcnet.lynn.model.Users;
+import com.lcnet.lynn.model.ManUsers;
 import org.nutz.dao.Sqls;
 import org.nutz.dao.sql.Sql;
 import org.springframework.stereotype.Repository;
@@ -17,21 +17,21 @@ public class UserDaoImol extends BaseDaoImpl implements UserDao {
     public static final String fileName = "sqls/user.sql";
 
     @Override
-    public List<Users> findAll() {
+    public List<ManUsers> findAll() {
 
-        List<Users> userList = this.getDao().query(Users.class, null);
+        List<ManUsers> userList = this.getDao().query(ManUsers.class, null);
         return userList;
     }
 
     @Override
-    public Users findByAccAndPwd(String account, String pwd) {
+    public ManUsers findByAccAndPwd(String account, String pwd) {
         String str = this.getDao(fileName).sqls().get("findByAccAndPwd");
         Sql sql = Sqls.queryEntity(str);
-        sql.setEntity(this.getDao().getEntity(Users.class));
+        sql.setEntity(this.getDao().getEntity(ManUsers.class));
         sql.params().set("acc", account);
         sql.params().set("pwd", pwd);
         this.getDao().execute(sql);
-        Users user = sql.getObject(Users.class);
+        ManUsers user = sql.getObject(ManUsers.class);
         return user;
     }
 }

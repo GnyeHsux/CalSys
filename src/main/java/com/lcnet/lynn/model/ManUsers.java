@@ -7,10 +7,10 @@ import org.nutz.dao.entity.annotation.Table;
 import java.util.Date;
 
 /**
- * Created by xusha on 2017/4/14.
+ * Created by lynn on 2017/4/14.
  */
-@Table("Users")
-public class Users {
+@Table("MAN_USERS")
+public class ManUsers {
     @Id
     @Column("user_id")
     private Integer userId;
@@ -32,6 +32,9 @@ public class Users {
 
     @Column("create_time")
     private Date createTime;
+
+    @Column("user_status")
+    private Integer userStatus;
 
     public Integer getUserId() {
         return userId;
@@ -87,5 +90,13 @@ public class Users {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public Integer getUserStatus() {
+        return userStatus;
+    }
+
+    public void setUserStatus(Integer userStatus) {
+        this.userStatus = userStatus;
     }
 }
