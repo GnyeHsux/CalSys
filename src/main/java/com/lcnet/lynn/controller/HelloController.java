@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 /**
- * Created by xusha on 2017/4/14.
+ * Created by Lynn on 2017/4/14.
  */
 @Controller
 public class HelloController {

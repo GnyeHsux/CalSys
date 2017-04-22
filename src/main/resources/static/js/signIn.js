@@ -5,24 +5,22 @@ var signInapp = angular.module('app.signIn',[])
 
 signInapp.controller('signInCtrl',['$scope','signInSer',function ($scope,signInSer) {
     console.log("nihao")
-    $scope.userAccount = "";
-    $scope.userPwd = "";
+    $scope.formData = {userAccount:'',userPwd:''};
     $scope.signIn = function () {
-        console.log($scope.userAccount)
-        console.log($scope.userPwd)
-        signInSer.login($scope.userAccount, $scope.userPwd);
-        console.log($scope.login)
+        console.log($scope.formData)
+        signInSer.login($scope.formData);
     }
 }])
 
 
 signInapp.factory('signInSer',['$http',function ($http) {
     return{
-        login:function (useraccount,userpwd) {
+        login:function (form) {
             $http({
                 method: 'POST',
-                url: 'localhost:8080/signIn',
-                data:{"useraccount":useraccount,"userpwd":userpwd}
+                url: 'http://localhost:8080/signIn',
+                params:form,
+                headers : {'Content-Type':'application/x-www-form-urlencoded'}
             }).then(function successCallback(response) {
                 return response;
             }, function errorCallback(response) {

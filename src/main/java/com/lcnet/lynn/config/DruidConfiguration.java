@@ -14,7 +14,7 @@ import java.sql.SQLException;
 
 /**
  * 数据库连接池
- * Created by xusha on 2017/4/17.
+ * Created by lynn on 2017/4/17.
  */
 @Configuration
 public class DruidConfiguration {
