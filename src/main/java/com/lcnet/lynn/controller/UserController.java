@@ -68,7 +68,7 @@ public class UserController {
     }*/
 
    @ApiOperation(value = "获取用户列表", notes = "")
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(value = "", method = RequestMethod.GET)
     public List<ManUsers> getUserList() throws MyException{
         List<ManUsers> list = userService.findAll();
         return list;

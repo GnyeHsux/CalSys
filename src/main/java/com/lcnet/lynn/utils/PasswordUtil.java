@@ -4,7 +4,7 @@ import org.apache.axis.encoding.Base64;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.security.crypto.codec.Utf8;
+//import org.springframework.security.crypto.codec.Utf8;
 
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
@@ -16,21 +16,21 @@ import javax.crypto.spec.SecretKeySpec;
  */
 public class PasswordUtil {
 	
-	private static Logger log = LoggerFactory.getLogger(PasswordUtil.class);
+	/*private static Logger log = LoggerFactory.getLogger(PasswordUtil.class);
 	
 	private static final String Algorithm = "DESede"; //定义 加密算法,可用 DES,DESede,Blowfish
 	
-	/**
+	*//**
 	 * 秘钥
-	 */
+	 *//*
 	private static final String secretKey = "com.lcnet.lynn" ;
 	
-	/**
+	*//**
 	 * 比对密码是否一致
 	 * @param expected
 	 * @param actual
 	 * @return
-	 */
+	 *//*
 	public static boolean equals(String expected, String actual) {
         byte[] expectedBytes = bytesUtf8(expected);
         byte[] actualBytes = bytesUtf8(actual);
@@ -47,11 +47,11 @@ public class PasswordUtil {
         return result == 0;
     }
 	
-	/**
+	*//**
 	 * 转换为UTF-8
 	 * @param s
 	 * @return
-	 */
+	 *//*
 	private static byte[] bytesUtf8(String s) {
         if(s == null) {
             return null;
@@ -60,12 +60,12 @@ public class PasswordUtil {
         return Utf8.encode(s);
     }
 	
-	/**
+	*//**
 	 * 根据用户名和密码进行加密
 	 * @param userName
 	 * @param password
 	 * @return
-	 */
+	 *//*
 	public static String encrypt(String userName, String password) {
 		String pword = null ;
 		final byte[] keyBytes = hex(userName) ; 
@@ -76,12 +76,12 @@ public class PasswordUtil {
         return pword ;
 	}
 	
-	/**
+	*//**
 	 * 根据用户名和密码进行解密
 	 * @param userName
 	 * @param password
 	 * @return
-	 */
+	 *//*
 	public static String decrypt(String userName, String password) {
 		
 		final byte[] keyBytes = hex(userName) ;   
@@ -93,7 +93,7 @@ public class PasswordUtil {
 		return null ;
 	}
 	
-	/**
+	*//**
 	 * 根据秘钥对密码或用户名进行加密
 	* @Title: encrypt 
 	* @author hlc004
@@ -103,7 +103,7 @@ public class PasswordUtil {
 	* @return String
 	* @date 2015年7月6日 下午2:41:49 
 	* @throws
-	 */
+	 *//*
 	public static String encrypt(String password) {
 		String pword = null ;
 		final byte[] keyBytes = hex(secretKey) ; 
@@ -114,7 +114,7 @@ public class PasswordUtil {
         return pword ;
 	}
 	
-	/**
+	*//**
 	 * 根据秘钥对密码或用户名进行解密
 	* @Title: decrypt 
 	* @author hlc004
@@ -124,7 +124,7 @@ public class PasswordUtil {
 	* @return String
 	* @date 2015年7月6日 下午2:41:49 
 	* @throws
-	 */
+	 *//*
 	public static String decrypt(String password) {
 		
 		final byte[] keyBytes = hex(secretKey) ;   
@@ -263,6 +263,6 @@ public class PasswordUtil {
 		System.out.println(decrypt("dMx75dPkLHE="));
 		System.out.println(decrypt("ux6sgat5mvAE6KfmkP1c8w=="));
 		System.out.println(decrypt("dECrEm+Pnm+O5k/tl7cNRA=="));
-    }
+    }*/
     
 }
