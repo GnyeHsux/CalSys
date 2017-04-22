@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * 全局异常处理
- * Created by xusha on 2017/4/14.
+ * Created by lynn on 2017/4/14.
  */
 @ControllerAdvice
 public class GlobalExceptionHandler {

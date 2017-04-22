@@ -13,7 +13,7 @@ import java.lang.reflect.Method;
 import java.util.*;
 
 /**
- * Created by xusha on 2017/4/14.
+ * Created by lynn on 2017/4/14.
  */
 @RestController
 @RequestMapping(value = "/users")
