@@ -1,7 +1,11 @@
 /**
  * Created by lynn on 2017/4/21.
  */
-var app = angular.module('myApp',['ngRoute','app.signIn']);
+var app = angular.module('myApp', [
+    'ngRoute',
+    'app.siCtrl',
+    'app.siServ'
+    ]);
 
 app.config(function ($routeProvider) {
 
