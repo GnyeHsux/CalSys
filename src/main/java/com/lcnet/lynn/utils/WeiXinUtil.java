@@ -22,7 +22,7 @@ public class WeiXinUtil {
 
     private static String URL = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=APPID&redirect_uri=URL&response_type=code&scope=snsapi_userinfo&state=PARAM#wechat_redirect";
 
-    private static String APPLY_URL = "http://"; // TODO: 2017/4/27 域名
+    private static String APPLY_URL = "http://gplynn.ngrok.cc/wechat/";
 
     public static WeiXinUtil getInstant() {
         if (weiXinUtil == null) {
