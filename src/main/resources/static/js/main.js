@@ -1,16 +1,26 @@
 /**
  * Created by lynn on 2017/4/21.
  */
-var app = angular.module('myApp', [
-    'ngRoute',
-    'app.siCtrl',
-    'app.siServ'
+var myApp = angular.module('myApp', [
+    'ui.router',
+    'myApp.ctrl',
+    'myApp.serv'
     ]);
 
-app.config(function ($routeProvider) {
+myApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+    //$urlRouterProvider.otherwise('/');
+    $urlRouterProvider.when("", "/signIn");
 
-    $routeProvider.when("/signIn/a/:a/b/:b/c/:c/d/:d",{
-        templateUrl:"templates/sign-in.html",
-        controller:"signInCtrl"
-    })
-})
+    $stateProvider
+        .state('signIn', {
+            url:'/signIn',
+            templateUrl: 'sign-in.html',
+            controller: 'signInCtrl'
+        })
+        .state('main', {
+            url:'/main',
+            templateUrl: 'main.html',
+            controller: 'mainCtrl'
+        })
+
+}]);

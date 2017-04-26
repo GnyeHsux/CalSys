@@ -4,9 +4,11 @@ import com.lcnet.lynn.dao.BaseDaoImpl;
 import com.lcnet.lynn.dao.UserDao;
 import com.lcnet.lynn.model.ManUsers;
 import org.nutz.dao.Sqls;
+import org.nutz.dao.entity.Record;
 import org.nutz.dao.sql.Sql;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,5 +35,18 @@ public class UserDaoImol extends BaseDaoImpl implements UserDao {
         this.getDao().execute(sql);
         ManUsers user = sql.getObject(ManUsers.class);
         return user;
+    }
+
+    @Override
+    public List<Record> getUserMenu(Integer userId) {
+        String str = this.getDao(fileName).sqls().get("findMenu");
+        Sql sql = Sqls.queryRecord(str);
+        sql.params().set("userId",userId);
+        this.getDao().execute(sql);
+        List<Record> records = sql.getList(Record.class);
+        if (records != null && records.size()>0){
+            return records;
+        }
+        return null;
     }
 }

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>贷款申请</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <link rel="stylesheet" href="../css/weui.min.css">
+    <link rel="stylesheet" href="../css/jquery-weui.css">
+    <link rel="stylesheet" href="../css/wechat.css">
+</head>
+<body>
+
+    <header class='we-header'>
+        <h1 class="we-title">贷款申请</h1>
+    </header>
+
+    <div class="weui_cells weui_cells_form">
+        <div class="weui_cell">
+            <div class="weui_cell_hd"><label class="weui_label graylable">客户名称：</label></div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" type="tel" value="大橘子">
+            </div>
+        </div>
+        <div class="weui_cell">
+            <div class="weui_cell_hd"><label class="weui_label graylable">身份证：</label></div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" type="tel" maxlength="18" value="450881199502270344">
+            </div>
+        </div>
+        <div class="weui_cell">
+            <div class="weui_cell_hd"><label class="weui_label graylable">贷款金额：</label></div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" type="number" value="" style="width: 90%">
+                <span style="width: 10%;float: right;" class="loan_unit">元</span>
+            </div>
+        </div>
+        <div class="weui_cell ">
+            <div class="weui_cell_hd"><label class="weui_label graylable">贷款期限：</label></div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <select class="weui_select" name="select1">
+                    <option value="6">6个月</option>
+                    <option value="12">一年</option>
+                    <option value="18">一年半</option>
+                </select>
+            </div>
+        </div>
+        <div class="weui_cell" style="border-bottom: 1px solid #d9d9d9">
+            <div class="weui_cell_hd"><label class="weui_label graylable">出生日期：</label></div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" type="number" value="">
+            </div>
+        </div>
+
+        <div style="height: 3rem;"></div>
+
+        <div class="weui_cell">
+            <div class="weui_cell_hd"><label class="weui_label">手机号</label></div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" type="tel" maxlength="11" value="12345678910">
+            </div>
+        </div>
+        <div class="weui_cell weui_vcode">
+            <div class="weui_cell_hd"><label class="weui_label">验证码</label></div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" type="number">
+            </div>
+            <div class="weui_cell_ft">
+                <div class="smsCode notSend"><span class="smsSpan">获取验证码</span></div>
+            </div>
+        </div>
+
+
+        <div class="weui_btn_area">
+            <a class="weui_btn weui_btn_primary" href="javascript:" id="showTooltips">提交申请</a>
+        </div>
+    </div>
+</body>
+</html>

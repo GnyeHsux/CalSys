@@ -3,6 +3,7 @@ package com.lcnet.lynn.service.impl;
 import com.lcnet.lynn.dao.UserDao;
 import com.lcnet.lynn.model.ManUsers;
 import com.lcnet.lynn.service.UserService;
+import org.nutz.dao.entity.Record;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,5 +25,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public ManUsers findByAccAndPwd(String account, String pwd) {
         return userDao.findByAccAndPwd(account, pwd);
+    }
+
+    @Override
+    public List<Record> getUserMenu(Integer userId) {
+        return userDao.getUserMenu(userId);
     }
 }

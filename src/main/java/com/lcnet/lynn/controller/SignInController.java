@@ -1,9 +1,15 @@
 package com.lcnet.lynn.controller;
 
+import com.lcnet.lynn.model.BaseMenu;
 import com.lcnet.lynn.model.ManUsers;
 import com.lcnet.lynn.service.UserService;
+import org.nutz.dao.entity.Record;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by lynn on 2017/4/21.
@@ -14,11 +20,19 @@ public class SignInController {
     private UserService userService;
 
     @RequestMapping(value = "/signIn", method = RequestMethod.POST)
-    public String signIn(@RequestParam(value = "userAccount") String userAccount,@RequestParam(value = "userPwd") String userPwd) {
+    public Map<String, Object> signIn(@RequestParam(value = "userAccount") String userAccount, @RequestParam(value = "userPwd") String userPwd) {
         ManUsers user = userService.findByAccAndPwd(userAccount, userPwd);
+        Map<String, Object> map = new HashMap<>();
         if (user != null){
-            return "nihao";
+            //成功
+            map.put("code","1");
+            map.put("user",user);
+            List<Record> menuList = userService.getUserMenu(user.getUserId());
+            map.put("menuList",menuList);
+            return map;
         }
-        return null;
+        //失败
+        map.put("code",0);
+        return map;
     }
 }

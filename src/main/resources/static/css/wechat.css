@@ -1,0 +1,55 @@
+
+.we-header{
+    padding: 35px 0;
+}
+.we-title{
+    text-align: center;
+    font-size: 34px;
+    color: #3cc51f;
+    font-weight: 400;
+    margin: 0 15%;
+}
+.smsCode{
+    height: 1.3rem;
+    width: 4rem;
+    margin: 0.45rem;
+    padding: 0.15rem 0.3rem;
+    border-radius: 0.2rem;
+    text-align: center;
+
+}
+.notSend{
+    color: black;
+    border: 1px solid green;
+}
+.haveSend{
+    border: 1px solid lightgray;
+    background-color: ghostwhite;
+    color: darkgray;
+}
+.smsSpan{
+    height: 1.3rem;
+    width: 5rem;
+    font-size: 0.6rem;
+    line-height: 1.3rem;
+}
+.hr_wrap{
+    height: 1rem;
+    margin: 1rem;
+}
+.hr_desc{
+    display: block;
+    border-left: 5px solid #04BE01;
+    padding-left: 1rem;
+}
+.loan_list{
+    margin: 1rem;
+    border: 1px solid #e7e7e7;
+}
+.list_cells{
+    padding: 10px 15px;
+    position: relative;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+}
