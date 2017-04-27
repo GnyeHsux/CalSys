@@ -22,5 +22,33 @@ myApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $
             templateUrl: 'main.html',
             controller: 'mainCtrl'
         })
+        .state('main.users',{
+            url:'/users',
+            views:{
+                'content':{
+                    templateUrl:'user/users.html',
+                    controller:'userCtrl'
+                }
+            }
+        })
+        .state('main.addUser',{
+            url:'/addUser',
+            views:{
+                'content':{
+                    templateUrl:'user/user-add.html',
+                    controller:'userCtrl'
+                }
+            }
+        })
+        .state('main.editUser',{
+            url:'/editUser?userId',
+            views:{
+                'content':{
+                    templateUrl:'user/user-add.html',
+                    controller:'userCtrl'
+                }
+            }
+        })
 
 }]);
+

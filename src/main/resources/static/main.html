@@ -31,32 +31,34 @@
 
 <div class="sidebar-nav">
     <ul>
-        <li><a href="#" data-target=".dashboard-menu" class="nav-header" data-toggle="collapse">
+        <!--<li><a href="">{{menu.menu_name}}</a></li>-->
+        <li><a href="javascript:;" data-target=".dashboard-menu" class="nav-header" data-toggle="collapse">
             用户管理<i class="fa fa-collapse"></i></a></li>
         <li>
             <ul class="dashboard-menu nav nav-list collapse in">
-                <li class="active"><a href="users.html"><span class="fa fa-caret-right"></span> 用户查询</a></li>
+                <li class="active"><a ui-sref="main.users" href="javascript:;"><span class="fa fa-caret-right"></span> 用户查询</a></li>
             </ul>
         </li>
 
-        <li data-popover="true" rel="popover" data-placement="right"><a href="#" data-target=".premium-menu" class="nav-header collapsed" data-toggle="collapse">
+        <li data-popover="true" rel="popover" data-placement="right"><a href="javascript:;" data-target=".premium-menu" class="nav-header collapsed" data-toggle="collapse">
             权限管理<i class="fa fa-collapse"></i></a></li>
         <li>
             <ul class="premium-menu nav nav-list collapse">
-                <li class="visible-xs visible-sm"><a href="../rootManage/rootPermission.html"><span class="fa fa-caret-right"></span>权限配置</a></li>
+                <li class="visible-xs visible-sm"><a href="javascript:;"><span class="fa fa-caret-right"></span>权限配置</a></li>
             </ul>
         </li>
 
-        <li data-popover="true" rel="popover" data-placement="right"><a href="#" data-target=".premium-menu" class="nav-header collapsed" data-toggle="collapse">
+        <li data-popover="true" rel="popover" data-placement="right"><a href="javascript:;" data-target=".premium-menu" class="nav-header collapsed" data-toggle="collapse">
             菜单管理<i class="fa fa-collapse"></i></a></li>
         <li>
             <ul class="premium-menu nav nav-list collapse">
-                <li class="visible-xs visible-sm"><a href="../menuManage/menuSetting.html"><span class="fa fa-caret-right"></span>菜单配置</a></li>
+                <li class="visible-xs visible-sm"><a href="javascript:;"><span class="fa fa-caret-right"></span>菜单配置</a></li>
             </ul>
         </li>
     </ul>
 </div>
 
+<!--
 <div class="content">
     <div class="header">
 
@@ -142,4 +144,8 @@
             <p>© 2017 <a href="javascript:void(0)" target="_blank">gplynn</a></p>
         </footer>
     </div>
+</div>-->
+
+<div class="content" ui-view="content">
+
 </div>

@@ -31,4 +31,9 @@ public class UserServiceImpl implements UserService {
     public List<Record> getUserMenu(Integer userId) {
         return userDao.getUserMenu(userId);
     }
+
+    @Override
+    public ManUsers queryUser(String userId) {
+        return userDao.queryUser(userId);
+    }
 }

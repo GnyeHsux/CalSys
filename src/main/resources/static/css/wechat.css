@@ -1,4 +1,17 @@
-
+#loading{
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    position: absolute;
+    z-index: 1001;
+}
+#error{
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    position: absolute;
+    z-index: 1000;
+}
 .we-header{
     padding: 35px 0;
 }

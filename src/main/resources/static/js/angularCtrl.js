@@ -12,6 +12,7 @@ angular.module('myApp.ctrl',[])
         promise.then(function (data) {
             if (data.code == '1'){
                 $rootScope.role = data.menuList[0].menu_code;
+                /*$rootScope.menuList = data.menuList;*/
                 $rootScope.loginMsg = "登录成功";
                 console.log($rootScope.role)
                 $rootScope.$state.go('main')
@@ -27,4 +28,16 @@ angular.module('myApp.ctrl',[])
 }])
 .controller('mainCtrl',['$scope',function ($scope) {
     $scope.nihao ="NIHAO";
+}])
+.controller('userCtrl',['$scope','$location','userSer',function ($scope,$location,userSer) {
+    $scope.userFormData = {username:'',employeeId:'',userAccount:'',userPwd:'',phone:'',userRole:''};
+    $scope.userId = $location.search().userId;
+    if ($scope.userId != null && $scope.userId != undefined && $scope.userId != ''){
+        console.log("nihao")
+       userSer.getManUser($scope.userId);
+
+    }
+}])
+.controller('contentCtrl',['$scope',function ($scope) {
+    $scope.contentList= {};
 }])

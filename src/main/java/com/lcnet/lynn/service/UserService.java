@@ -14,4 +14,6 @@ public interface UserService {
     ManUsers findByAccAndPwd(String account, String pwd);
 
     List<Record> getUserMenu(Integer userId);
+
+    ManUsers queryUser(String userId);
 }

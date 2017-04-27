@@ -1,12 +1,14 @@
 package com.lcnet.lynn.controller;
 
-import com.lcnet.lynn.model.BaseMenu;
 import com.lcnet.lynn.model.ManUsers;
 import com.lcnet.lynn.service.UserService;
+import me.chanjar.weixin.common.util.StringUtils;
 import org.nutz.dao.entity.Record;
+import org.nutz.json.Json;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,6 +30,7 @@ public class SignInController {
             map.put("code","1");
             map.put("user",user);
             List<Record> menuList = userService.getUserMenu(user.getUserId());
+            //Map<String, Object> menuList = testQueryMenuList();
             map.put("menuList",menuList);
             return map;
         }
@@ -35,4 +38,13 @@ public class SignInController {
         map.put("code",0);
         return map;
     }
+
+    @RequestMapping(value = "/queryUser", method = RequestMethod.GET)
+    public Map<String,Object> queryUser(@RequestParam(value = "userId") String userId){
+        ManUsers manUsers = userService.queryUser(userId);
+        Map<String,Object> map = new HashMap<>();
+        map.put("manUsers",manUsers);
+        return map;
+    }
+
 }

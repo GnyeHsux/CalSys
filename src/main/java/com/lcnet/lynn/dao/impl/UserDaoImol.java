@@ -49,4 +49,15 @@ public class UserDaoImol extends BaseDaoImpl implements UserDao {
         }
         return null;
     }
+
+    @Override
+    public ManUsers queryUser(String userId) {
+        String str = this.getDao(fileName).sqls().get("queryUser");
+        Sql sql = Sqls.queryEntity(str);
+        sql.setEntity(this.getDao().getEntity(ManUsers.class));
+        sql.params().set("userId", userId);
+        this.getDao().execute(sql);
+        ManUsers user = sql.getObject(ManUsers.class);
+        return user;
+    }
 }
