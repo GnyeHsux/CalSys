@@ -18,6 +18,7 @@ import java.util.Map;
  * Created by xusha on 2017/4/27.
  */
 @RestController
+@RequestMapping("/wechat")
 public class WeChatController {
 
     @Autowired
@@ -25,21 +26,21 @@ public class WeChatController {
 
     /**
      * 获取用户openId
+     *
      * @param code
      * @return
      */
     @RequestMapping(value = "/getuseropenid", method = RequestMethod.GET)
-    public Map<String, Object> getUserOpenId(@RequestParam(value = "code", required=false) String code) {
+    public Map<String, Object> getUserOpenId(@RequestParam(value = "code", required = false) String code) {
         Map<String, Object> rtn = new HashMap<>();
-        if(!StringUtil.isEmpty(code)) {
+        if (!StringUtil.isEmpty(code)) {
             WxMpUser wxUser = WeiXinUtil.getInstant().getWxMpUser(code);
-            if(wxUser != null) {
+            if (wxUser != null) {
                 String openid = wxUser.getOpenId();
-                if(!StringUtil.isEmpty(openid)) {
+                if (!StringUtil.isEmpty(openid)) {
                     rtn.put("openid", openid);
-
                     CustWx user = weChatService.findCustWxByOpenId(openid);
-                    if(user == null) {
+                    if (user == null) {
                         user = new CustWx();
                         user.setOpenId(openid);
                         /*user.setNickname(wxUser.getNickname());

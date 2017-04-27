@@ -70,6 +70,7 @@
 </script>
 <script type="text/javascript" src="../js/city-picker.min.js"></script>
 <script type="text/javascript" src="../js/jquery-weui.js"></script>
+<script type="text/javascript" src="../js/wxMain.js"></script>
 <script>
     $("#start").cityPicker({
         title: "选择出发地",
@@ -77,5 +78,29 @@
             console.log(values, displayValues);
         }
     });
+    $(document).ready(function () {
+        var code = getUrlParameter('code');
+        console.info(code);
+        if (isNotEmptyStr(code)) {
+            $.ajax({
+                url: '../wechat/getuseropenid?code=' + code,
+                dataType: "json",
+                async: true,
+                success: function (data) {
+                    var openId = '';
+                    if (isNotEmptyStr(data.openId)) {
+                        openId = data.openId;
+                        localStorage.setItem("openId", openId);
+                    } else {
+                        openId = localStorage.getItem("openId");
+                    }
+                    console.log(data);
+                },
+                error: function (data) {
+                    alert("出错了")
+                }
+            })
+        }
+    })
 </script>
 </html>
