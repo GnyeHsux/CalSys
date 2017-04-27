@@ -53,13 +53,9 @@ angular.module('myApp.serv',[])
             })
 
             return defer.promise;*/
-           $http({
-               method:"get", 
-               url:'http://localhost:8080/queryUser',
-               data:{userId:userId}
-           }).success(function (data) {
-               console.log(data)
-           })
+            $http.get('http://localhost:8080/queryUser',{params:{"userId": userId}}).success(function(data){
+                console.log(data)
+            });
         }
     }
 }])
