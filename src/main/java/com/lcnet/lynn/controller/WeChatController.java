@@ -1,14 +1,13 @@
 package com.lcnet.lynn.controller;
 
+import com.lcnet.lynn.model.CustInfo;
 import com.lcnet.lynn.model.CustWx;
+import com.lcnet.lynn.model.vo.RegisterForm;
 import com.lcnet.lynn.service.WeChatService;
 import com.lcnet.lynn.utils.StringUtil;
 import com.lcnet.lynn.utils.WeiXinUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import me.chanjar.weixin.mp.bean.result.WxMpUser;
 
 import java.util.HashMap;
@@ -55,5 +54,31 @@ public class WeChatController {
             }
         }
         return rtn;
+    }
+
+    @RequestMapping("/userRegister")
+    public Map<String, Object> userRegister(@ModelAttribute RegisterForm form) {
+        Map<String, Object> rst = new HashMap<>();
+        int errorCode = 0;
+        String errorMsg = "";
+        if (StringUtil.isEmpty(form.getvCode())) {
+            errorCode = 1;
+            errorMsg = "验证码不能为空！";
+        } else {
+            if (!"0000".equals(form.getvCode())) {
+                errorCode = 1;
+                errorMsg = "验证码不正确！";
+            } else {
+                //插入用户信息
+                CustInfo custInfo = weChatService.insertCustInfo(form);
+                if (custInfo != null) {
+                    errorCode = 2;
+                    errorMsg = "注册成功！";
+                }
+            }
+        }
+        rst.put("errorCode", errorCode);
+        rst.put("errorMsg", errorMsg);
+        return rst;
     }
 }

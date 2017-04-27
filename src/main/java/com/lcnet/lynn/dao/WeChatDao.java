@@ -1,5 +1,6 @@
 package com.lcnet.lynn.dao;
 
+import com.lcnet.lynn.model.CustInfo;
 import com.lcnet.lynn.model.CustWx;
 
 /**
@@ -9,4 +10,6 @@ public interface WeChatDao {
     CustWx findCustWxByOpenId(String openid);
 
     CustWx insertCustWx(CustWx user);
+
+    CustInfo insertCustInfo(CustInfo form);
 }
