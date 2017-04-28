@@ -2,6 +2,7 @@ package com.lcnet.lynn.dao.impl;
 
 import com.lcnet.lynn.dao.BaseDaoImpl;
 import com.lcnet.lynn.dao.WeChatDao;
+import com.lcnet.lynn.model.CustInfo;
 import com.lcnet.lynn.model.CustWx;
 import org.nutz.dao.Cnd;
 import org.springframework.stereotype.Repository;
@@ -26,5 +27,10 @@ public class WechatDaoImpl extends BaseDaoImpl implements WeChatDao {
     public CustWx insertCustWx(CustWx user) {
         CustWx wxUser = this.getDao().insert(user);
         return wxUser;
+    }
+
+    @Override
+    public CustInfo insertCustInfo(CustInfo custInfo) {
+        return this.getDao().insert(custInfo);
     }
 }

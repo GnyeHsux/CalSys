@@ -20,25 +20,25 @@
     </header>
 
     <div class="weui_cells weui_cells_form">
-        <form>
+        <form id="form">
             <input type="hidden" name="code" id="code" value="">
-            <input type="hidden" name="openid" id="openid" value="">
+            <input type="hidden" name="openId" id="openid" value="">
             <div class="weui_cell">
                 <div class="weui_cell_hd"><label class="weui_label">姓名：</label></div>
                 <div class="weui_cell_bd weui_cell_primary">
-                    <input class="weui_input" type="tel" placeholder="请输入您的姓名">
+                    <input name="userName" class="weui_input" type="text" placeholder="请输入您的姓名">
                 </div>
             </div>
             <div class="weui_cell">
                 <div class="weui_cell_hd"><label class="weui_label">手机号：</label></div>
                 <div class="weui_cell_bd weui_cell_primary">
-                    <input class="weui_input" type="tel" maxlength="11" placeholder="请输入手机号">
+                    <input name="phone" class="weui_input" type="tel" maxlength="11" placeholder="请输入手机号">
                 </div>
             </div>
             <div class="weui_cell weui_vcode">
                 <div class="weui_cell_hd"><label class="weui_label">验证码：</label></div>
                 <div class="weui_cell_bd weui_cell_primary">
-                    <input class="weui_input" type="number" placeholder="请输入验证码">
+                    <input name="vCode" class="weui_input" type="number" placeholder="请输入验证码">
                 </div>
                 <div class="weui_cell_ft">
                     <div class="smsCode notSend"><span class="smsSpan">获取验证码</span></div>
@@ -47,20 +47,20 @@
             <div class="weui_cell">
                 <div class="weui_cell_hd"><label class="weui_label">身份证：</label></div>
                 <div class="weui_cell_bd weui_cell_primary">
-                    <input class="weui_input" type="tel" maxlength="18" placeholder="请输入身份证号">
+                    <input name="idCode" class="weui_input" type="number" maxlength="18" placeholder="请输入身份证号">
                 </div>
             </div>
             <div class="weui_cells weui_cells_form">
                 <div class="weui_cell">
                     <div class="weui_cell_hd"><label class="weui_label">所在城市：</label></div>
                     <div class="weui_cell_bd weui_cell_primary">
-                        <input class="weui_input" id="start" type="text" value="湖北省 武汉市 武昌区" readonly>
+                        <input name="address" class="weui_input" id="start" type="text" value="湖北省 武汉市 武昌区" readonly>
                     </div>
                 </div>
             </div>
 
             <div class="weui_btn_area">
-                <a class="weui_btn weui_btn_primary" href="javascript:" id="showTooltips">注册</a>
+                <a class="weui_btn weui_btn_primary" href="javascript:" onclick="doRegister()">注册</a>
             </div>
         </form>
     </div>
@@ -113,6 +113,7 @@
                         localStorage.setItem("openId", openId);
                     } else {
                         openId = localStorage.getItem("openId");
+                        openId = getUrlParameter('openId');
                     }
                     console.log( data);
                     if (isNotEmptyStr(openId)) {
@@ -132,5 +133,21 @@
             })
         }
     })
+
+    function doRegister() {
+        console.log($("#form").serialize());
+        $.ajax({
+            url:"../wechat/userRegister",
+            type: "POST",
+            data: $("#form").serialize(),
+            async: true,
+            success: function (data) {
+                console.log(data);
+            },
+            error: function (data) {
+
+            }
+        })
+    }
 </script>
 </html>
