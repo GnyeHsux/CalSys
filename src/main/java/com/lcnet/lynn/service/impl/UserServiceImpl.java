@@ -33,7 +33,22 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public ManUsers queryUser(String userId) {
+    public Record queryUser(String userId) {
         return userDao.queryUser(userId);
+    }
+
+    @Override
+    public List<Record> getUserLists() {
+        return userDao.grUserLists();
+    }
+
+    @Override
+    public void saveUser(ManUsers manUsers) {
+        userDao.saveUser(manUsers);
+    }
+
+    @Override
+    public void updateUser(ManUsers manUsers) {
+        userDao.updateUser(manUsers);
     }
 }

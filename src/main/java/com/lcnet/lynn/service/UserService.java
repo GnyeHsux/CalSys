@@ -15,5 +15,11 @@ public interface UserService {
 
     List<Record> getUserMenu(Integer userId);
 
-    ManUsers queryUser(String userId);
+    Record queryUser(String userId);
+
+    List<Record> getUserLists();
+
+    void saveUser(ManUsers manUsers);
+
+    void updateUser(ManUsers manUsers);
 }

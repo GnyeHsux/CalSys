@@ -51,13 +51,37 @@ public class UserDaoImol extends BaseDaoImpl implements UserDao {
     }
 
     @Override
-    public ManUsers queryUser(String userId) {
+    public Record queryUser(String userId) {
         String str = this.getDao(fileName).sqls().get("queryUser");
-        Sql sql = Sqls.queryEntity(str);
-        sql.setEntity(this.getDao().getEntity(ManUsers.class));
+        Sql sql = Sqls.queryRecord(str);
         sql.params().set("userId", userId);
         this.getDao().execute(sql);
-        ManUsers user = sql.getObject(ManUsers.class);
-        return user;
+        List<Record> records = sql.getList(Record.class);
+        if (records != null && records.size()>0){
+            return records.get(0);
+        }
+        return null;
+    }
+
+    @Override
+    public List<Record> grUserLists() {
+        String str = this.getDao(fileName).sqls().get("getUserLists");
+        Sql sql = Sqls.queryRecord(str);
+        this.getDao().execute(sql);
+        List<Record> records = sql.getList(Record.class);
+        if (records != null && records.size()>0){
+            return records;
+        }
+        return null;
+    }
+
+    @Override
+    public void saveUser(ManUsers manUsers) {
+        this.getDao().insert(manUsers);
+    }
+
+    @Override
+    public void updateUser(ManUsers manUsers) {
+        this.getDao().update(manUsers);
     }
 }

@@ -12,3 +12,9 @@ SELECT mu.*,mr.id AS userRole FROM man_users mu
 LEFT JOIN user_roles_rel ur ON ur.user_id = mu.user_id
 LEFT JOIN man_roles mr ON mr.id = ur.role_id
 WHERE mu.user_id=@userId
+
+/*getUserLists*/
+SELECT mu.*,mr.`name` AS roleName FROM man_users mu
+LEFT JOIN user_roles_rel ur ON ur.user_id = mu.user_id
+LEFT JOIN man_roles mr ON mr.id = ur.role_id
+WHERE mr.id <> 1

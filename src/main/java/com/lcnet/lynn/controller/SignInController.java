@@ -39,12 +39,6 @@ public class SignInController {
         return map;
     }
 
-    @RequestMapping(value = "/queryUser", method = RequestMethod.GET)
-    public Map<String,Object> queryUser(@RequestParam(value = "userId") String userId){
-        ManUsers manUsers = userService.queryUser(userId);
-        Map<String,Object> map = new HashMap<>();
-        map.put("manUsers",manUsers);
-        return map;
-    }
+
 
 }

@@ -15,7 +15,6 @@
         <div class="">
             <br>
             <form id="myForm">
-                <input type="hidden" name="userId" value="">
                 <table class="table-condensed myTable">
                     <tr>
                         <th width="15%"></th>
@@ -25,19 +24,19 @@
                     </tr>
                     <tr>
                         <td>姓名：</td>
-                        <td><input type="text" name="username" class="form-control"></td>
+                        <td><input type="text" name="username" class="form-control" ng-model="userFormData.userName"></td>
                         <td>工号：</td>
-                        <td><input type="text" name="employeeId" class="form-control"></td>
+                        <td><input type="text" name="employeeId" class="form-control" ng-model="userFormData.employeeId"></td>
                     </tr>
                     <tr>
                         <td>登录账号：</td>
-                        <td><input type="text" name="userAccount" class="form-control"></td>
+                        <td><input type="text" name="userAccount" class="form-control" ng-model="userFormData.userAccount"></td>
                         <td>密码：</td>
-                        <td><input type="text" name="userPwd" class="form-control"></td>
+                        <td><input type="text" name="userPwd" class="form-control" ng-model="userFormData.userPwd"></td>
                     </tr>
                     <tr>
                         <td>手机号：</td>
-                        <td><input type="text" name="phone" class="form-control"></td>
+                        <td><input type="text" name="phone" class="form-control" ng-model="userFormData.phone"></td>
                         <td>角色：</td>
                         <td>
                             <select class="form-control" name="userRole">
