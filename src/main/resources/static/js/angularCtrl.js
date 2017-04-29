@@ -14,12 +14,10 @@ angular.module('myApp.ctrl', [])
                     $rootScope.role = data.menuList[0].menu_code;
                     /*$rootScope.menuList = data.menuList;*/
                     $rootScope.loginMsg = "登录成功";
-                    console.log($rootScope.role)
                     $rootScope.$state.go('main')
                 } else {
                     $rootScope.loginMsg = "用户不存在或密码错误！";
                 }
-
 
             }, function (data) {
 
@@ -28,12 +26,43 @@ angular.module('myApp.ctrl', [])
     }])
     .controller('mainCtrl', ['$scope', function ($scope) {
         $scope.nihao = "NIHAO";
+
     }])
-    .controller('userListCtrl', ['$scope', function ($scope) {
-        var promise = userSer.getManUser($scope.userId);
+    .controller('userListCtrl', ['$scope','userListSer', function ($scope,userListSer) {
+        $scope.text = 'lalalall';
+        $scope.queryUsername = '';
+        $scope.queryEmployeeId = '';
+        $scope.userList = [];
+        var promise = userListSer.getUserList($scope.queryUsername,$scope.queryEmployeeId);
         promise.then(function (data) {
-            console.log(data)
+            $scope.userList = data;
         })
+
+        $scope.submitMsg = function () {
+            promise.then(function (data) {
+                console.log(data)
+            })
+        }
+
+
+        $scope.del = function () {
+            ngDialog.open({
+                template: '/del.html',
+                className: 'ngdialog-theme-default',
+                scope: $scope,
+                controller: function ($scope) {
+
+                    $scope.confirm = function () {
+                        console.log('ok');
+                        $scope.closeThisDialog();
+                    };
+                    $scope.cancel = function () {
+                        $scope.closeThisDialog();
+                    };
+                }
+            });
+        };
+
     }])
     .controller('userCtrl', ['$scope', '$location', 'userSer', function ($scope, $location, userSer) {
         $scope.userFormData = {
@@ -64,4 +93,9 @@ angular.module('myApp.ctrl', [])
     }])
     .controller('contentCtrl', ['$scope', function ($scope) {
         $scope.contentList = {};
+    }])
+    .controller('demoCtrl',['$scope',function ($scope) {
+       $scope.demo = "demo";
+
+
     }])

@@ -17,7 +17,7 @@ public interface UserDao {
 
     Record queryUser(String userId);
 
-    List<Record> grUserLists();
+    List<Record> getUserLists(String username,String employeeId);
 
     void saveUser(ManUsers manUsers);
 

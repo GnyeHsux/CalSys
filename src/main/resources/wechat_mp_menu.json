@@ -1,0 +1,31 @@
+{
+  "menu": {
+    "button": [
+      {
+        "name": "金融信贷",
+        "sub_button": [
+          {
+            "type": "view",
+            "name": "注册",
+            "url": "http://gplynn.ngrok.cc/wechat/register.html"
+          },
+          {
+            "type": "view",
+            "name": "申请",
+            "url": "http://gplynn.ngrok.cc/wechat/loanApply.html"
+          }
+        ]
+      },
+      {
+        "name": "个人中心",
+        "sub_button": [
+          {
+            "type": "view",
+            "name": "我的资料",
+            "url": "http://gplynn.ngrok.cc/wechat/myInfo.html"
+          }
+        ]
+      }
+    ]
+  }
+}

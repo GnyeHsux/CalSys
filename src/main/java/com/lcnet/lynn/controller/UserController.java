@@ -27,8 +27,8 @@ public class UserController {
     private RoleService roleService;
 
     @RequestMapping(value = "userList", method = RequestMethod.GET)
-    public List<Record> getUserList(){
-        List<Record> userLists = userService.getUserLists();
+    public List<Record> getUserList(@RequestParam(required = false) String username,@RequestParam(required = false) String employeeId){
+        List<Record> userLists = userService.getUserLists(username,employeeId);
         return userLists;
     }
 

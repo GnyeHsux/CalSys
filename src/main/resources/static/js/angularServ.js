@@ -8,7 +8,7 @@ angular.module('myApp.serv', [])
             login: function (form) {
                 var defer = $q.defer()
                 var data = $httpParamSerializer(form);
-                $http.post('http://localhost:8080/signIn', data, {
+                $http.post('/signIn', data, {
                     headers: {"Content-Type": "application/x-www-form-urlencoded"}
                 }).success(function (data) {
                     defer.resolve(data);
@@ -26,7 +26,7 @@ angular.module('myApp.serv', [])
             login: function (form) {
                 var defer = $q.defer()
                 var data = $httpParamSerializer(form);
-                $http.post('http://localhost:8080/signIn', data, {
+                $http.post('/signIn', data, {
                     headers: {"Content-Type": "application/x-www-form-urlencoded"}
                 }).success(function (data) {
                     defer.resolve(data);
@@ -40,9 +40,9 @@ angular.module('myApp.serv', [])
     }])
     .factory('userListSer',['$http','$httpParamSerializer','$q',function ($http, $httpParamSerializer,$q) {
         return{
-            getUserList:function () {
+            getUserList:function (username,employeeId) {
                 var defer = $q.defer();
-                $http.get('http//localhost:8080/users/userList').success(function (data) {
+                $http.get('/users/userList',{params: {"username": username,"employeeId":employeeId}}).success(function (data) {
                     defer.resolve(data);
                 }).error(function () {
                     defer.reject();
@@ -56,7 +56,7 @@ angular.module('myApp.serv', [])
         return {
             getManUser: function (userId) {
                 var defer = $q.defer();
-                $http.get('http://localhost:8080/users/queryUser', {params: {"userId": userId}}).success(function (data) {
+                $http.get('/users/queryUser', {params: {"userId": userId}}).success(function (data) {
                     defer.resolve(data);
                 }).error(function (data) {
                     defer.reject();

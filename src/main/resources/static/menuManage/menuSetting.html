@@ -118,7 +118,7 @@
         </li>
 
         <li data-popover="true" rel="popover" data-placement="right"><a href="#" data-target=".premium-menu" class="nav-header collapsed" data-toggle="collapse">
-            权限管理<i class="fa fa-collapse"></i></a></li>
+            角色管理<i class="fa fa-collapse"></i></a></li>
         <li>
             <ul class="premium-menu nav nav-list collapse">
                 <li class="visible-xs visible-sm"><a href="../rootManage/rootPermission.html"><span class="fa fa-caret-right"></span>权限配置</a></li>
@@ -129,7 +129,7 @@
             菜单管理<i class="fa fa-collapse"></i></a></li>
         <li>
             <ul class="dashboard-menu nav nav-list collapse in">
-                <li class="active"><a href="menuSetting.html"><span class="fa fa-caret-right"></span>菜单配置</a></li>
+                <li class="active"><a href="menuSetting.html"><span class="fa fa-caret-right"></span>菜单管理</a></li>
             </ul>
         </li>
     </ul>
@@ -147,11 +147,7 @@
 
             <div style="float: right;">
                 <form class="form-inline" id="myForm">
-                    <input type="text" class="form-control" placeholder="请输入用户姓名" name="username">
-                    <input type="text" class="form-control" placeholder="请输入用户工号" name="employeeId">
-                    &nbsp;&nbsp;<label>角色：</label><select style="width: 10rem" class="form-control" name="roleId">
-                        <option>全部</option>
-                    </select>
+                    <input type="text" class="form-control" placeholder="请输入角色名称" name="username">
                     <button class="btn btn-primary" onclick="submitMsg()">查询</button>
                 </form>
 
@@ -160,39 +156,65 @@
         <table class="table">
             <thead>
             <tr>
-                <th>用户id</th>
-                <th>用户名</th>
-                <th>角色</th>
-                <th>所配菜单</th>
-                <th style="width: 7.5em;"></th>
+                <th>菜单id</th>
+                <th>菜单名称</th>
+                <th>上级菜单</th>
+                <th style="width: 7.5em;">操作</th>
             </tr>
             </thead>
             <tbody>
             <tr>
                 <td>1</td>
-                <td>林裕美</td>
-                <td>总经理</td>
-                <td>我的客户，客户查询，我的业务，业务查询</td>
+                <td>用户管理</td>
+                <td></td>
                 <td>
-                    <a href="l"><i class="fa fa-pencil"></i><i>菜单配置</i></a>
+                    <a href="l"><i class="fa fa-pencil"></i><i>编辑</i></a>
+                    <a>停用</a>
                 </td>
             </tr>
             <tr>
                 <td>2</td>
-                <td>大绍殷</td>
-                <td>客服1</td>
-                <td>我的客户，我的业务，业务查询</td>
+                <td>用户查询</td>
+                <td>用户管理</td>
                 <td>
-                    <a href="l"><i class="fa fa-pencil"></i><i>菜单配置</i></a>
+                    <a href="l"><i class="fa fa-pencil"></i><i>编辑</i></a>
+                    <a>停用</a>
                 </td>
             </tr>
             <tr>
                 <td>3</td>
-                <td>小橘毛</td>
-                <td>客服2</td>
-                <td>我的客户，我的业务，业务查询</td>
+                <td>角色管理</td>
+                <td></td>
                 <td>
-                    <a href="l"><i class="fa fa-pencil"></i><i>菜单配置</i></a>
+                    <a href="l"><i class="fa fa-pencil"></i><i>编辑</i></a>
+                    <a>停用</a>
+                </td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>角色管理</td>
+                <td>角色管理</td>
+                <td>
+                    <a href="l"><i class="fa fa-pencil"></i><i>编辑</i></a>
+                    <a>停用</a>
+                </td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>菜单管理</td>
+                <td></td>
+                <td>
+                    <a href="l"><i class="fa fa-pencil"></i><i>编辑</i></a>
+                    <a>停用</a>
+                </td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>菜单管理</td>
+                <td>菜单管理</td>
+                <td>
+                    <a href="l"><i class="fa fa-pencil"></i><i>编辑</i></a>
+                    <a>停用</a>
                 </td>
             </tr>
             </tbody>

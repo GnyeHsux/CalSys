@@ -27,7 +27,7 @@ myApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $
             views:{
                 'content':{
                     templateUrl:'user/users.html',
-                    controller:'userCtrl'
+                    controller:'userListCtrl'
                 }
             }
         })
@@ -49,6 +49,15 @@ myApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $
                 }
             }
         })
+        .state('main.demo',{
+        url:'/demo',
+        views:{
+            'content':{
+                templateUrl:'nihao.html',
+                controller:'demoCtrl'
+            }
+        }
+    })
 
 }]);
 

@@ -38,8 +38,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<Record> getUserLists() {
-        return userDao.grUserLists();
+    public List<Record> getUserLists(String username,String employeeId) {
+        return userDao.getUserLists(username,employeeId);
     }
 
     @Override

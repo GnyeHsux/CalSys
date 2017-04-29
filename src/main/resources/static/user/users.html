@@ -9,12 +9,11 @@
         <div style="float: left">
             <button class="btn btn-primary" ui-sref="main.addUser"><i class="fa fa-plus"></i> 新增用户</button>
         </div>
-
         <div style="float: right;">
             <form class="form-inline" id="myForm">
-                <input type="text" class="form-control" placeholder="请输入用户姓名" name="username">
-                <input type="text" class="form-control" placeholder="请输入用户工号" name="employeeId">
-                <button class="btn btn-primary" onclick="submitMsg()">查询</button>
+                <input type="text" class="form-control" placeholder="请输入用户姓名" name="username" ng-model="queryUsername">
+                <input type="text" class="form-control" placeholder="请输入用户工号" name="employeeId" ng-model="queryEmployeeId">
+                <button class="btn btn-primary" ng-click="submitMsg()">查询</button>
             </form>
 
         </div>
@@ -32,6 +31,17 @@
         </tr>
         </thead>
         <tbody>
+        <tr ng-repeat="user in userList">
+            <td>{{user.user_id}}</td>
+            <td>{{user.user_name}}</td>
+            <td>{{user.user_account}}</td>
+            <td>{{user.phone}}</td>
+            <td>{{user.employee_id}}</td>
+            <td>{{user.rolename}}</td>
+            <td>
+                <a href="javascript:;" ui-sref="main.editUser({userId:{{user.user_id}}})"><i class="fa fa-pencil"></i><i>编辑</i></a>
+            </td>
+        </tr>
         <!--<tr>
             <td>1</td>
             <td>林裕美</td>
@@ -78,6 +88,7 @@
         <li><a href="#">&raquo;</a></li>
     </ul>
 
+    <a ng-click="del()">demo</a>
     <footer>
         <hr>
         <p>© 2017 <a href="javascript:void(0)" target="_blank">gplynn</a></p>

@@ -1,8 +1,11 @@
 package com.lcnet.lynn.dao.impl;
 
+import com.alibaba.druid.util.StringUtils;
 import com.lcnet.lynn.dao.BaseDaoImpl;
 import com.lcnet.lynn.dao.UserDao;
 import com.lcnet.lynn.model.ManUsers;
+import com.lcnet.lynn.utils.StringUtil;
+import org.nutz.dao.Condition;
 import org.nutz.dao.Sqls;
 import org.nutz.dao.entity.Record;
 import org.nutz.dao.sql.Sql;
@@ -64,8 +67,11 @@ public class UserDaoImol extends BaseDaoImpl implements UserDao {
     }
 
     @Override
-    public List<Record> grUserLists() {
+    public List<Record> getUserLists(String username,String employeeId) {
         String str = this.getDao(fileName).sqls().get("getUserLists");
+        /*if (! StringUtil.isEmpty(username)){
+
+        }*/
         Sql sql = Sqls.queryRecord(str);
         this.getDao().execute(sql);
         List<Record> records = sql.getList(Record.class);

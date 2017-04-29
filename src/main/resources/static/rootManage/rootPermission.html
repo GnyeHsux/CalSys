@@ -118,10 +118,10 @@
         </li>
 
         <li data-popover="true" rel="popover" data-placement="right"><a href="#" data-target=".premium-menu" class="nav-header" data-toggle="collapse">
-            权限管理<i class="fa fa-collapse"></i></a></li>
+            角色管理<i class="fa fa-collapse"></i></a></li>
         <li>
             <ul class="premium-menu nav nav-list collapse">
-                <li class="active"><a href="rootPermission.html"><span class="fa fa-caret-right"></span>权限配置</a></li>
+                <li class="active"><a href="rootPermission.html"><span class="fa fa-caret-right"></span>角色管理</a></li>
             </ul>
         </li>
 
@@ -145,6 +145,10 @@
 
         <div class="btn-toolbar list-toolbar">
 
+            <div style="float: left">
+                <button class="btn btn-primary" ui-sref="main.addUser"><i class="fa fa-plus"></i> 新增角色</button>
+            </div>
+
             <div style="float: right;">
                 <form class="form-inline" id="myForm">
                     <input type="text" class="form-control" placeholder="请输入角色名称" name="username">
@@ -166,7 +170,9 @@
                 <td>1</td>
                 <td>总经理</td>
                 <td>
-                    <a href="l"><i class="fa fa-pencil"></i><i>权限配置</i></a>
+                    <a href="l"><i class="fa fa-pencil"></i><i>权限配置</i></a>&nbsp;&nbsp;
+                    <a href="">修改</a>&nbsp;&nbsp;
+                    <a href="">删除</a>
                 </td>
             </tr>
 
@@ -174,7 +180,10 @@
                 <td>2</td>
                 <td>客服1</td>
                 <td>
-                    <a href="l"><i class="fa fa-pencil"></i><i>权限配置</i></a>
+                    <a href="l"><i class="fa fa-pencil"></i><i>权限配置</i></a>&nbsp;&nbsp;
+                    <a href="">修改</a>&nbsp;&nbsp;
+                    <a href="">删除</a>
+
                 </td>
             </tr>
 
@@ -182,7 +191,9 @@
                 <td>2</td>
                 <td>客服2</td>
                 <td>
-                    <a href="l"><i class="fa fa-pencil"></i><i>权限配置</i></a>
+                    <a href="l"><i class="fa fa-pencil"></i><i>权限配置</i></a>&nbsp;&nbsp;
+                    <a href="">修改</a>&nbsp;&nbsp;
+                    <a href="">删除</a>
                 </td>
             </tr>
             </tbody>

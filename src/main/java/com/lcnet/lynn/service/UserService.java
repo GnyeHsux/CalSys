@@ -17,7 +17,7 @@ public interface UserService {
 
     Record queryUser(String userId);
 
-    List<Record> getUserLists();
+    List<Record> getUserLists(String username,String employeeId);
 
     void saveUser(ManUsers manUsers);
 
