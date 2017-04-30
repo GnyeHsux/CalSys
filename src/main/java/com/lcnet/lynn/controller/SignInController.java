@@ -29,9 +29,8 @@ public class SignInController {
             //成功
             map.put("code","1");
             map.put("user",user);
-            List<Record> menuList = userService.getUserMenu(user.getUserId());
-            //Map<String, Object> menuList = testQueryMenuList();
-            map.put("menuList",menuList);
+            //List<Record> menuList = userService.getUserMenu(user.getUserId());
+            //map.put("menuList",menuList);
             return map;
         }
         //失败

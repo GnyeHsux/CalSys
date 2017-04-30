@@ -26,7 +26,7 @@ public class UserController {
     @Autowired
     private RoleService roleService;
 
-    @RequestMapping(value = "userList", method = RequestMethod.GET)
+    @RequestMapping(value = "/userList", method = RequestMethod.GET)
     public List<Record> getUserList(@RequestParam(required = false) String username,@RequestParam(required = false) String employeeId){
         List<Record> userLists = userService.getUserLists(username,employeeId);
         return userLists;
@@ -40,8 +40,8 @@ public class UserController {
         return map;
     }
 
-    @RequestMapping(value = "userAdd",method = RequestMethod.POST)
-    public Map<String,Object> saveOrUpdateUser(UserForm userForm){
+    @RequestMapping(value = "/userAdd",method = RequestMethod.POST)
+    public Map<String,Object> saveOrUpdateUser(@ModelAttribute UserForm userForm){
         Map<String,Object> map = new HashMap<>();
         ManUsers manUsers = new ManUsers();
         UserRolesRel userRolesRel = new UserRolesRel();

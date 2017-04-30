@@ -62,6 +62,17 @@ angular.module('myApp.serv', [])
                     defer.reject();
                 });
                 return defer.promise;
+            },
+            submitUserMsg:function (form) {
+                console.log(form);
+                var defer = $q.defer();
+                //var data = $httpParamSerializer(form);
+                $http.post('/users/userAdd',form).success(function (data) {
+                    defer.resolve(data);
+                }).error(function (data) {
+                    defer.reject();
+                });
+                return defer.promise;
             }
         }
     }])

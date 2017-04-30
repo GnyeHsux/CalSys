@@ -11,8 +11,9 @@ angular.module('myApp.ctrl', [])
             var promise = signInSer.login($scope.formData);
             promise.then(function (data) {
                 if (data.code == '1') {
-                    $rootScope.role = data.menuList[0].menu_code;
+                    //$rootScope.role = data.menuList[0].menu_code;
                     /*$rootScope.menuList = data.menuList;*/
+                    $rootScope.loginName = data.user.userName;
                     $rootScope.loginMsg = "登录成功";
                     $rootScope.$state.go('main')
                 } else {
@@ -44,25 +45,6 @@ angular.module('myApp.ctrl', [])
             })
         }
 
-
-        $scope.del = function () {
-            ngDialog.open({
-                template: '/del.html',
-                className: 'ngdialog-theme-default',
-                scope: $scope,
-                controller: function ($scope) {
-
-                    $scope.confirm = function () {
-                        console.log('ok');
-                        $scope.closeThisDialog();
-                    };
-                    $scope.cancel = function () {
-                        $scope.closeThisDialog();
-                    };
-                }
-            });
-        };
-
     }])
     .controller('userCtrl', ['$scope', '$location', 'userSer', function ($scope, $location, userSer) {
         $scope.userFormData = {
@@ -88,14 +70,18 @@ angular.module('myApp.ctrl', [])
                 $scope.userFormData.phone = data.manUser.phone;
                 $scope.userFormData.userRole = data.manUser.userrole;
             })
-
         }
+
+        $scope.submitForm = function () {
+            var subPromise = userSer.submitUserMsg($scope.userFormData);
+            subPromise.then(function (data) {
+                console.log(data);
+            })
+        }
+
+
+
     }])
     .controller('contentCtrl', ['$scope', function ($scope) {
         $scope.contentList = {};
-    }])
-    .controller('demoCtrl',['$scope',function ($scope) {
-       $scope.demo = "demo";
-
-
     }])

@@ -49,15 +49,5 @@ myApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $
                 }
             }
         })
-        .state('main.demo',{
-        url:'/demo',
-        views:{
-            'content':{
-                templateUrl:'nihao.html',
-                controller:'demoCtrl'
-            }
-        }
-    })
-
 }]);
 

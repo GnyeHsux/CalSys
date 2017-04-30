@@ -72,9 +72,9 @@
     </header>
 </div>
 
-<div id="error" >
+<div id="error" style="display: none;">
     <header class='we-header'>
-        <h1 class="we-title">请在微信打开</h1>
+        <h1 class="we-title">请在微信打开客户端打开</h1>
     </header>
 </div>
 
@@ -99,31 +99,29 @@
     });
     $(document).ready(function () {
         var code = getUrlParameter('code');
-        console.info(code);
         if (isNotEmptyStr(code)) {
             $.ajax({
                 url: '../wechat/getuseropenid?code=' + code,
                 dataType: "json",
                 async: true,
                 success: function (data) {
-                    $("#loading").hide();
                     var openId = '';
                     if (isNotEmptyStr(data.openId)) {
                         openId = data.openId;
                         localStorage.setItem("openId", openId);
                     } else {
                         openId = localStorage.getItem("openId");
-                        openId = getUrlParameter('openId');
+                        //openId = getUrlParameter('openId');
                     }
-                    console.log( data);
+                    console.log(openId);
                     if (isNotEmptyStr(openId)) {
                         $("#openid").val(openId);
                         $("#show").show();
                         $("#loading").hide();
                         $("#error").hide();
-                    } else {
+                    }else {
+                        $("#loading").hide();
                         $("#error").show();
-                        $("#show").hide();
                     }
                 },
                 error: function (data) {
@@ -131,6 +129,10 @@
                     alert("出错了")
                 }
             })
+        }else {
+            $("#loading").hide();
+            $("#error").show();
+            alert("没有code")
         }
     })
 
