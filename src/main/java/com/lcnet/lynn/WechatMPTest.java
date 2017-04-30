@@ -20,7 +20,7 @@ public class WechatMPTest {
         
         try {
 			wxService.menuDelete();
-			InputStream menuIs = WechatMPTest.class.getResourceAsStream("wechat_mp_menu.json");
+			InputStream menuIs = WechatMPTest.class.getResourceAsStream("/wechat_mp_menu.json");
 	        WxMenu wxMenu = WxMenu.fromJson(menuIs);
 	        wxService.menuCreate(wxMenu);
 		} catch (WxErrorException e) {
