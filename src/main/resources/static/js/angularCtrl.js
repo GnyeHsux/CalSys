@@ -2,7 +2,7 @@
  * Created by lynn on 2017/4/23.
  */
 angular.module('myApp.ctrl', [])
-    .controller('signInCtrl', ['$rootScope', '$scope', '$state', 'signInSer', function ($rootScope, $scope, $state, signInSer) {
+    .controller('signInCtrl', ['$rootScope', '$scope', '$state','signInSer', function ($rootScope, $scope, $state, signInSer) {
         $rootScope.$state = $state;
         $scope.formData = {userAccount: '', userPwd: ''};
 
@@ -11,13 +11,15 @@ angular.module('myApp.ctrl', [])
             var promise = signInSer.login($scope.formData);
             promise.then(function (data) {
                 if (data.code == '1') {
-                    //$rootScope.role = data.menuList[0].menu_code;
-                    /*$rootScope.menuList = data.menuList;*/
+                    //用户名
                     $rootScope.loginName = data.user.userName;
-                    $rootScope.loginMsg = "登录成功";
+
+                    //用户id
+                    $rootScope.loginUserId = data.user.userId;
+                    alert("登录成功！");
                     $rootScope.$state.go('main')
                 } else {
-                    $rootScope.loginMsg = "用户不存在或密码错误！";
+                    alert("用户不存在或者密码不正确！");
                 }
 
             }, function (data) {
@@ -25,8 +27,17 @@ angular.module('myApp.ctrl', [])
             })
         }
     }])
-    .controller('mainCtrl', ['$scope', function ($scope) {
+    .controller('mainCtrl', ['$scope','$rootScope','mainSer', function ($scope,$rootScope,mainSer) {
         $scope.nihao = "NIHAO";
+        var userId = $rootScope.loginUserId;
+        var promise = mainSer.getMenu(userId);
+        promise.then(function (data) {
+            //console.log(data);
+            $scope.menuList = data;
+            console.log($scope.menuList);
+        })
+
+        $rootScope.$state.go('main.users');
 
     }])
     .controller('userListCtrl', ['$scope','userListSer', function ($scope,userListSer) {
@@ -40,13 +51,16 @@ angular.module('myApp.ctrl', [])
         })
 
         $scope.submitMsg = function () {
-            promise.then(function (data) {
-                console.log(data)
+            var pro = userListSer.getUserList($scope.queryUsername,$scope.queryEmployeeId);
+            pro.then(function (data) {
+                $scope.userList = data;
+            },function () {
+                $scope.userList = $scope.userList;
             })
         }
 
     }])
-    .controller('userCtrl', ['$scope', '$location', 'userSer', function ($scope, $location, userSer) {
+    .controller('userCtrl', ['$scope', '$location','$rootScope', 'userSer', function ($scope, $location,$rootScope, userSer) {
         $scope.userFormData = {
             userId: '',
             userName: '',
@@ -69,13 +83,23 @@ angular.module('myApp.ctrl', [])
                 $scope.userFormData.userPwd = data.manUser.user_pwd;
                 $scope.userFormData.phone = data.manUser.phone;
                 $scope.userFormData.userRole = data.manUser.userrole;
+
+
+                $scope.rolesList = data.rolesList;
             })
         }
 
         $scope.submitForm = function () {
             var subPromise = userSer.submitUserMsg($scope.userFormData);
             subPromise.then(function (data) {
-                console.log(data);
+
+                if (data.code == "0"){
+                    //成功
+                    alert("操作成功");
+                    $rootScope.$state.go('main.users');
+                }else {
+                    alert("操作失败");
+                }
             })
         }
 

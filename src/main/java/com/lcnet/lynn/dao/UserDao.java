@@ -1,5 +1,6 @@
 package com.lcnet.lynn.dao;
 
+import com.lcnet.lynn.model.ManRoles;
 import com.lcnet.lynn.model.ManUsers;
 import org.nutz.dao.entity.Record;
 
@@ -19,7 +20,11 @@ public interface UserDao {
 
     List<Record> getUserLists(String username,String employeeId);
 
-    void saveUser(ManUsers manUsers);
+    ManUsers saveUser(ManUsers manUsers);
 
-    void updateUser(ManUsers manUsers);
+    ManUsers updateUser(ManUsers manUsers);
+
+    List<Record> getSubMenu(String pMenuCode);
+
+    List<ManRoles> getRoleList();
 }

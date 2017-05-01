@@ -39,8 +39,8 @@
                         <td><input type="text" name="phone" class="form-control" ng-model="userFormData.phone"></td>
                         <td>角色：</td>
                         <td>
-                            <select class="form-control" name="userRole">
-                                <option>总经理</option>
+                            <select class="form-control" name="userRole" ng-model="userFormData.userRole" ng-options="x.id as x.name for x in rolesList">
+                                <!--<option ng-repeat="role in rolesList" value="{{role.id}}">{{role.name}}</option>-->
                             </select>
                         </td>
                     </tr>

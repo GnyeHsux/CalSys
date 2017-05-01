@@ -14,7 +14,7 @@
             <li class="dropdown hidden-xs">
                 <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
                     <span class="glyphicon glyphicon-user padding-right-small"
-                          style="position:relative;top: 3px;"></span> {{role}}
+                          style="position:relative;top: 3px;"></span> {{loginName}}
                     <i class="fa fa-caret-down"></i>
                 </a>
 
@@ -30,9 +30,9 @@
 
 
 <div class="sidebar-nav">
-    <ul>
-        <!--<li><a href="">{{menu.menu_name}}</a></li>-->
-        <li><a href="#" data-target=".dashboard-menu" class="nav-header" data-toggle="collapse">
+    <ul ng-repeat="menu in menuList">
+
+        <!--<li><a href="#" data-target=".dashboard-menu" class="nav-header" data-toggle="collapse">
             用户管理<i class="fa fa-collapse"></i></a></li>
         <li>
             <ul class="dashboard-menu nav nav-list collapse in">
@@ -53,6 +53,14 @@
         <li>
             <ul class="premium-menu nav nav-list collapse">
                 <li class="visible-xs visible-sm"><a href="javascript:;"><span class="fa fa-caret-right"></span>菜单配置</a></li>
+            </ul>
+        </li>-->
+        <li><a href="#" data-target=".dashboard-menu" class="nav-header" data-toggle="collapse">
+            {{menu.title}}<i class="fa fa-collapse"></i></a>
+        </li>
+        <li ng-repeat="sub in menu.children">
+            <ul class="dashboard-menu nav nav-list collapse in">
+                <li class=""><a ui-sref="main.{{sub.link}}" ui-sref-opts="{reload:true}" href="#"><span class="fa fa-caret-right"></span> {sub.title}</a></li>
             </ul>
         </li>
     </ul>

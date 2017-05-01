@@ -23,12 +23,9 @@ angular.module('myApp.serv', [])
     }])
     .factory('mainSer', ['$http', '$httpParamSerializer', '$q', function ($http, $httpParamSerializer, $q) {
         return {
-            login: function (form) {
+            getMenu: function (userId) {
                 var defer = $q.defer()
-                var data = $httpParamSerializer(form);
-                $http.post('/signIn', data, {
-                    headers: {"Content-Type": "application/x-www-form-urlencoded"}
-                }).success(function (data) {
+                $http.get('/users/getUserMenu',{params:{"userId":userId}}).success(function (data) {
                     defer.resolve(data);
                 }).error(function (data) {
                     defer.reject();
@@ -42,7 +39,7 @@ angular.module('myApp.serv', [])
         return{
             getUserList:function (username,employeeId) {
                 var defer = $q.defer();
-                $http.get('/users/userList',{params: {"username": username,"employeeId":employeeId}}).success(function (data) {
+                $http.get('/users/userList',{params: {"username": username,"employeeId":employeeId},cache:false}).success(function (data) {
                     defer.resolve(data);
                 }).error(function () {
                     defer.reject();

@@ -33,9 +33,6 @@ public class ManUsers {
     @Column("create_time")
     private Date createTime;
 
-    @Column("user_status")
-    private Integer userStatus;
-
     public Integer getUserId() {
         return userId;
     }
@@ -90,13 +87,5 @@ public class ManUsers {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
-    }
-
-    public Integer getUserStatus() {
-        return userStatus;
-    }
-
-    public void setUserStatus(Integer userStatus) {
-        this.userStatus = userStatus;
     }
 }

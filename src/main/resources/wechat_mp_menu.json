@@ -7,12 +7,12 @@
           {
             "type": "view",
             "name": "注册",
-            "url": "http://gplynn.ngrok.cc/wechat/register.html"
+            "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx77d473956373ecb2&redirect_uri=http://gplynn.ngrok.cc/wechat/register.html&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect"
           },
           {
             "type": "view",
             "name": "申请",
-            "url": "http://gplynn.ngrok.cc/wechat/loanApply.html"
+            "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx77d473956373ecb2&redirect_uri=http://gplynn.ngrok.cc/wechat/loanApply.html&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect"
           }
         ]
       },
@@ -22,7 +22,7 @@
           {
             "type": "view",
             "name": "我的资料",
-            "url": "http://gplynn.ngrok.cc/wechat/myInfo.html"
+            "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx77d473956373ecb2&redirect_uri=http://gplynn.ngrok.cc/wechat/myInfo.html&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect"
           }
         ]
       }

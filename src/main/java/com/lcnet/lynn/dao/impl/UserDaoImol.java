@@ -3,8 +3,10 @@ package com.lcnet.lynn.dao.impl;
 import com.alibaba.druid.util.StringUtils;
 import com.lcnet.lynn.dao.BaseDaoImpl;
 import com.lcnet.lynn.dao.UserDao;
+import com.lcnet.lynn.model.ManRoles;
 import com.lcnet.lynn.model.ManUsers;
 import com.lcnet.lynn.utils.StringUtil;
+import org.nutz.dao.Cnd;
 import org.nutz.dao.Condition;
 import org.nutz.dao.Sqls;
 import org.nutz.dao.entity.Record;
@@ -69,10 +71,17 @@ public class UserDaoImol extends BaseDaoImpl implements UserDao {
     @Override
     public List<Record> getUserLists(String username,String employeeId) {
         String str = this.getDao(fileName).sqls().get("getUserLists");
-        /*if (! StringUtil.isEmpty(username)){
-
-        }*/
         Sql sql = Sqls.queryRecord(str);
+        StringBuffer sb = new StringBuffer();
+        if (! StringUtil.isEmpty(username)){
+            sb.append("and mu.user_name like '%").append(username).append("%'");
+        }
+        if (! StringUtil.isEmpty(employeeId)){
+            sb.append(" and mu.employee_id like '%").append(username).append("%'");
+        }
+        if (! StringUtil.isEmpty(sb.toString())){
+            sql.setCondition(Cnd.wrap(sb.toString()));
+        }
         this.getDao().execute(sql);
         List<Record> records = sql.getList(Record.class);
         if (records != null && records.size()>0){
@@ -82,12 +91,33 @@ public class UserDaoImol extends BaseDaoImpl implements UserDao {
     }
 
     @Override
-    public void saveUser(ManUsers manUsers) {
+    public ManUsers saveUser(ManUsers manUsers) {
         this.getDao().insert(manUsers);
+        return manUsers;
     }
 
     @Override
-    public void updateUser(ManUsers manUsers) {
-        this.getDao().update(manUsers);
+    public ManUsers updateUser(ManUsers manUsers) {
+        this.getDao().updateIgnoreNull(manUsers);
+        return manUsers;
+    }
+
+    @Override
+    public List<Record> getSubMenu(String pMenuCode) {
+        String str = this.getDao(fileName).sqls().get("getSubMenu");
+        Sql sql = Sqls.queryRecord(str);
+        sql.params().set("pMenuCode",pMenuCode);
+        this.getDao().execute(sql);
+        List<Record> records = sql.getList(Record.class);
+        if (records != null && records.size()>0){
+            return records;
+        }
+        return null;
+    }
+
+    @Override
+    public List<ManRoles> getRoleList() {
+        List<ManRoles> rolesList = this.getDao().query(ManRoles.class, Cnd.wrap("id != '1'"));
+        return  rolesList;
     }
 }

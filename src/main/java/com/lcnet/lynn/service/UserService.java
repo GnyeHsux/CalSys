@@ -1,5 +1,6 @@
 package com.lcnet.lynn.service;
 
+import com.lcnet.lynn.model.ManRoles;
 import com.lcnet.lynn.model.ManUsers;
 import org.nutz.dao.entity.Record;
 
@@ -22,4 +23,8 @@ public interface UserService {
     void saveUser(ManUsers manUsers);
 
     void updateUser(ManUsers manUsers);
+
+    List<Record> getSubMenu(String pMenuCode);
+
+    List<ManRoles> getRoleList();
 }

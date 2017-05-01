@@ -1,6 +1,7 @@
 package com.lcnet.lynn.service.impl;
 
 import com.lcnet.lynn.dao.UserDao;
+import com.lcnet.lynn.model.ManRoles;
 import com.lcnet.lynn.model.ManUsers;
 import com.lcnet.lynn.service.UserService;
 import org.nutz.dao.entity.Record;
@@ -50,5 +51,15 @@ public class UserServiceImpl implements UserService {
     @Override
     public void updateUser(ManUsers manUsers) {
         userDao.updateUser(manUsers);
+    }
+
+    @Override
+    public List<Record> getSubMenu(String pMenuCode) {
+        return userDao.getSubMenu(pMenuCode);
+    }
+
+    @Override
+    public List<ManRoles> getRoleList() {
+        return userDao.getRoleList();
     }
 }
