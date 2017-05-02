@@ -26,3 +26,8 @@ function isEmptyStr(str) {
 function isNotEmptyStr(str) {
     return str != '' && str != 'undefined' && str != undefined && str != null;
 }
+
+function gotoHTML(url) {
+    url = url + "#wechat_redirect";
+    window.open(url, "_self");
+}
