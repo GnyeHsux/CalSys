@@ -37,7 +37,7 @@ public class WeChatController {
             if (wxUser != null) {
                 String openid = wxUser.getOpenId();
                 if (!StringUtil.isEmpty(openid)) {
-                    rtn.put("openid", openid);
+                    rtn.put("openId", openid);
                     CustWx user = weChatService.findCustWxByOpenId(openid);
                     if (user == null) {
                         user = new CustWx();

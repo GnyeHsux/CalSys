@@ -7,7 +7,7 @@ import org.nutz.dao.entity.annotation.Table;
 /**
  * Created by lynn on 2017/4/27.
  */
-@Table("csut_wx")
+@Table("cust_wx")
 public class CustWx {
     @Id
     @Column("id")
