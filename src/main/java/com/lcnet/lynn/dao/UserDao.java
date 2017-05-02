@@ -27,4 +27,6 @@ public interface UserDao {
     List<Record> getSubMenu(String pMenuCode);
 
     List<ManRoles> getRoleList();
+
+    Boolean checkEmployeeId(String employeeId);
 }

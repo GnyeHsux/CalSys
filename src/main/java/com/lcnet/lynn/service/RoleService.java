@@ -13,7 +13,7 @@ import java.util.List;
 public interface RoleService {
     List<ManRoles> findAll();
 
-    void saveUserRolesRel(UserRolesRel userRolesRel);
+    UserRolesRel saveUserRolesRel(UserRolesRel userRolesRel);
 
     void updateUserRolesRel(UserRolesRel userRolesRel);
 

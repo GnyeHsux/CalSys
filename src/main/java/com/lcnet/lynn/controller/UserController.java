@@ -33,13 +33,19 @@ public class UserController {
         return userLists;
     }
 
+    @RequestMapping(value = "getRoleList", method = RequestMethod.GET)
+    public Map<String,Object> getRoleLists(){
+        Map<String,Object> map = new HashMap<>();
+        List<ManRoles> rolesList = userService.getRoleList();
+        map.put("rolesList",rolesList);
+        return map;
+    }
+
     @RequestMapping(value = "/queryUser", method = RequestMethod.GET)
     public Map<String,Object> queryUser(String userId){
         Record user = userService.queryUser(userId);
-        List<ManRoles> rolesList = userService.getRoleList();
         Map<String,Object> map = new HashMap<>();
         map.put("manUser",user);
-        map.put("rolesList",rolesList);
         return map;
     }
 
@@ -63,6 +69,7 @@ public class UserController {
                         subMenu.put("link",rs.getString("menu_code"));
                     }
 
+
                     menuMap.put("children",subMenu);
                     menuLists.add(menuMap);
                 }
@@ -81,33 +88,52 @@ public class UserController {
         try {
             manUsers.setUserName(userForm.getUserName());
             manUsers.setUserAccount(userForm.getUserAccount());
-            manUsers.setEmployeeId(userForm.getEmployeeId());
             manUsers.setPhone(userForm.getPhone());
             manUsers.setUserPwd(userForm.getUserPwd());
 
             String userId = userForm.getUserId();
             //新增
             if (StringUtil.isEmpty(userId)){
+                Boolean boo = userService.checkEmployeeId(userForm.getEmployeeId());
+                if (boo){
+                    map.put("code","0");
+                    map.put("msg","工号已存在");
+                    return map;
+                }
+                manUsers.setEmployeeId(userForm.getEmployeeId());
+
                 userService.saveUser(manUsers);
 
                 userRolesRel.setRoleId(Integer.parseInt(userForm.getUserRole()));
                 userRolesRel.setUserId(manUsers.getUserId());
                 roleService.saveUserRolesRel(userRolesRel);
+                //成功
+                map.put("code","1");
+                map.put("msg","新增成功！");
             }else {
                 //编辑
-                manUsers.setUserId(Integer.parseInt(userForm.getUserId()));
+                manUsers.setUserId(Integer.parseInt(userId));
+                Record oldManUser = userService.queryUser(userId);
+                String oldEmployeeId = userForm.getEmployeeId();
+                if (! oldEmployeeId.equals(oldManUser.getString("employee_id"))){
+                    map.put("code","0");
+                    map.put("msg","工号已存在");
+                    return map;
+                }
+                manUsers.setEmployeeId(userForm.getEmployeeId());
                 userService.updateUser(manUsers);
                 userRolesRel = roleService.getUserRolesRel(userForm.getUserId());
                 userRolesRel.setRoleId(Integer.parseInt(userForm.getUserRole()));
                 roleService.updateUserRolesRel(userRolesRel);
+                //成功
+                map.put("code","1");
+                map.put("msg","编辑成功！");
             }
-
-            //成功
-            map.put("code","1");
         }catch (Exception e){
             e.printStackTrace();
             //失败
             map.put("code","0");
+            map.put("msg","操作失败");
         }
 
 

@@ -8,7 +8,7 @@ import org.nutz.dao.entity.annotation.Table;
 /**
  * Created by lynn on 2017/4/27.
  */
-@Table("MAN_ROLES")
+@Table("USER_ROLES_REL")
 public class UserRolesRel {
     @Id
     @Column("id")

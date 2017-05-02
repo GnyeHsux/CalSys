@@ -74,7 +74,7 @@ public class UserDaoImol extends BaseDaoImpl implements UserDao {
         Sql sql = Sqls.queryRecord(str);
         StringBuffer sb = new StringBuffer();
         if (! StringUtil.isEmpty(username)){
-            sb.append("and mu.user_name like '%").append(username).append("%'");
+            sb.append(" and mu.user_name like '%").append(username).append("%'");
         }
         if (! StringUtil.isEmpty(employeeId)){
             sb.append(" and mu.employee_id like '%").append(username).append("%'");
@@ -119,5 +119,14 @@ public class UserDaoImol extends BaseDaoImpl implements UserDao {
     public List<ManRoles> getRoleList() {
         List<ManRoles> rolesList = this.getDao().query(ManRoles.class, Cnd.wrap("id != '1'"));
         return  rolesList;
+    }
+
+    @Override
+    public Boolean checkEmployeeId(String employeeId) {
+        List<ManUsers> manUsersList = this.getDao().query(ManUsers.class,Cnd.where("employee_id","=",employeeId));
+        if (manUsersList != null && manUsersList.size()>0){
+            return true;
+        }
+        return false;
     }
 }

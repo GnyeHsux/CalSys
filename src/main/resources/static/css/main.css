@@ -4,6 +4,11 @@
     margin: 0px auto;
     margin-top: 1em;
 }
+
+.navbar-default .navbar-brand, .navbar-default .navbar-brand:hover {
+    color: #fff;
+}
+
 #myForm{
     text-align: center;
 }
@@ -69,4 +74,31 @@
     padding: 0 5px;
     color: #ccc;
     content: "/\00a0";
+}
+.dropMenu{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    float: left;
+    min-width: 160px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    font-size: 14px;
+    text-align: center;
+    text-decoration: none;
+    list-style: none;
+    background-color: #6f80a1;
+    background-clip: padding-box;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, .15);
+    border-radius: 4px;
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+}
+.dropdown a{
+    color: whitesmoke;
+}
+.dropdown:hover{
+    background-color: #4d5b76;
 }

@@ -13,7 +13,7 @@ import java.util.List;
 public interface RoleDao {
     List<ManRoles> findAll();
 
-    void saveUserRolesRel(UserRolesRel userRolesRel);
+    UserRolesRel saveUserRolesRel(UserRolesRel userRolesRel);
 
     void updateUserRolesRel(UserRolesRel userRolesRel);
 

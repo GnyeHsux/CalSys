@@ -62,4 +62,9 @@ public class UserServiceImpl implements UserService {
     public List<ManRoles> getRoleList() {
         return userDao.getRoleList();
     }
+
+    @Override
+    public Boolean checkEmployeeId(String employeeId) {
+        return userDao.checkEmployeeId(employeeId);
+    }
 }

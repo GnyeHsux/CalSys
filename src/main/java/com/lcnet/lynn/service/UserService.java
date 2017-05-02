@@ -27,4 +27,6 @@ public interface UserService {
     List<Record> getSubMenu(String pMenuCode);
 
     List<ManRoles> getRoleList();
+
+    Boolean checkEmployeeId(String employeeId);
 }

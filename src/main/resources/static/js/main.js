@@ -14,16 +14,19 @@ myApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $
     $stateProvider
         .state('signIn', {
             url:'/signIn',
+            cache:'false',
             templateUrl: 'sign-in.html',
             controller: 'signInCtrl'
         })
         .state('main', {
             url:'/main',
+            cache:'false',
             templateUrl: 'main.html',
             controller: 'mainCtrl'
         })
         .state('main.users',{
             url:'/users',
+            cache:'false',
             views:{
                 'content':{
                     templateUrl:'user/users.html',
@@ -33,6 +36,7 @@ myApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $
         })
         .state('main.addUser',{
             url:'/addUser',
+            cache:'false',
             views:{
                 'content':{
                     templateUrl:'user/user-add.html',
@@ -42,10 +46,31 @@ myApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $
         })
         .state('main.editUser',{
             url:'/editUser?userId',
+            cache:'false',
             views:{
                 'content':{
                     templateUrl:'user/user-add.html',
                     controller:'userCtrl'
+                }
+            }
+        })
+        .state('main.myBusi',{
+            url:"/myBusi",
+            cache:'false',
+            views:{
+                'content':{
+                    templateUrl:'bussiness/myBussiness.html',
+                    controller:'myBusiCtrl'
+                }
+            }
+        })
+        .state('main.listBusi',{
+            url:"/listBusi",
+            cache:'false',
+            views:{
+                'content':{
+                    templateUrl:'bussiness/listbusi.html',
+                    controller:'listBusiCtrl'
                 }
             }
         })

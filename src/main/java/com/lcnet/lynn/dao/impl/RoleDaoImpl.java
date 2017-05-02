@@ -11,7 +11,7 @@ import java.util.List;
 
 
 /**
- * Created by xusha on 2017/4/27.
+ * Created by lynn on 2017/4/27.
  */
 
 @Repository
@@ -24,8 +24,9 @@ public class RoleDaoImpl extends BaseDaoImpl implements RoleDao {
     }
 
     @Override
-    public void saveUserRolesRel(UserRolesRel userRolesRel) {
+    public UserRolesRel saveUserRolesRel(UserRolesRel userRolesRel) {
         this.getDao().insert(userRolesRel);
+        return userRolesRel;
     }
 
     @Override

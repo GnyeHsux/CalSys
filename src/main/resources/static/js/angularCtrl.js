@@ -13,9 +13,9 @@ angular.module('myApp.ctrl', [])
                 if (data.code == '1') {
                     //用户名
                     $rootScope.loginName = data.user.userName;
-
                     //用户id
                     $rootScope.loginUserId = data.user.userId;
+
                     alert("登录成功！");
                     $rootScope.$state.go('main')
                 } else {
@@ -28,16 +28,33 @@ angular.module('myApp.ctrl', [])
         }
     }])
     .controller('mainCtrl', ['$scope','$rootScope','mainSer', function ($scope,$rootScope,mainSer) {
-        $scope.nihao = "NIHAO";
+        //$rootScope.openDropMenu = false;
         var userId = $rootScope.loginUserId;
-        var promise = mainSer.getMenu(userId);
+        //TODO 菜单后台无法获取数组类型子菜单
+        /*var promise = mainSer.getMenu(userId);
         promise.then(function (data) {
             //console.log(data);
             $scope.menuList = data;
             console.log($scope.menuList);
         })
+        console.log($scope.menuList)*/
+        var promise = mainSer.getUserRole(userId);
+        promise.then(function (data) {
+            if (data.code == "1"){
+                $rootScope.loginUserRole = data.roleId;
+                if (data.roleId == '1'){
+                    $rootScope.$state.go('main.users');
+                }
 
-        $rootScope.$state.go('main.users');
+                if (data.roleId == '2' || data.roleId == '3' || data.roleId == '9'){
+                    $rootScope.$state.go('main.listBusi');
+                }
+            }else {
+                alert("获取用户菜单失败");
+                $rootScope.$state.go('signIn');
+            }
+        })
+
 
     }])
     .controller('userListCtrl', ['$scope','userListSer', function ($scope,userListSer) {
@@ -48,14 +65,14 @@ angular.module('myApp.ctrl', [])
         var promise = userListSer.getUserList($scope.queryUsername,$scope.queryEmployeeId);
         promise.then(function (data) {
             $scope.userList = data;
-        })
+        });
 
         $scope.submitMsg = function () {
             var pro = userListSer.getUserList($scope.queryUsername,$scope.queryEmployeeId);
             pro.then(function (data) {
                 $scope.userList = data;
             },function () {
-                $scope.userList = $scope.userList;
+                $scope.userList = [];
             })
         }
 
@@ -71,9 +88,20 @@ angular.module('myApp.ctrl', [])
             userRole: ''
         };
 
+        var rolePro = userSer.getRoleList();
+        rolePro.then(function (data) {
+            $scope.rolesList = data.rolesList;
+        });
+
+        $rootScope.isNotEmpty = function (str) {
+            if (str != null && str != undefined && str != ''){
+                return true;
+            }
+            return false;
+        }
 
         $scope.userId = $location.search().userId;
-        if ($scope.userId != null && $scope.userId != undefined && $scope.userId != '') {
+        if ($rootScope.isNotEmpty($scope.userId)) {
             var promise = userSer.getManUser($scope.userId);
             promise.then(function (data) {
                 $scope.userFormData.userId = data.manUser.user_id;
@@ -83,9 +111,6 @@ angular.module('myApp.ctrl', [])
                 $scope.userFormData.userPwd = data.manUser.user_pwd;
                 $scope.userFormData.phone = data.manUser.phone;
                 $scope.userFormData.userRole = data.manUser.userrole;
-
-
-                $scope.rolesList = data.rolesList;
             })
         }
 
@@ -93,12 +118,12 @@ angular.module('myApp.ctrl', [])
             var subPromise = userSer.submitUserMsg($scope.userFormData);
             subPromise.then(function (data) {
 
-                if (data.code == "0"){
+                if (data.code == "1"){
                     //成功
-                    alert("操作成功");
+                    alert(data.msg);
                     $rootScope.$state.go('main.users');
                 }else {
-                    alert("操作失败");
+                    alert(data.msg);
                 }
             })
         }
@@ -106,6 +131,23 @@ angular.module('myApp.ctrl', [])
 
 
     }])
-    .controller('contentCtrl', ['$scope', function ($scope) {
-        $scope.contentList = {};
+    .controller('myBusiCtrl', ['rootScope','$scope', function ($rootScope,$scope) {
+        $scope.nihao = "nihao";
+    }])
+    .controller('listBusiCtrl', ['$scope','busiListSer', function ($scope, busiListSer) {
+        $scope.nihao = "nihao";
+
+        var promise = busiListSer.getBusiList('')
+        promise.then(function (data) {
+            $scope.busiList = data;
+        });
+
+        $scope.submitMsg = function () {
+            var pro = userListSer.listBusiSer.getBusiList($rootScope.loginUserId);
+            pro.then(function (data) {
+                $scope.busiList = data;
+            },function () {
+                $scope.busiList = [];
+            })
+        }
     }])

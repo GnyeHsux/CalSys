@@ -24,8 +24,9 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public void saveUserRolesRel(UserRolesRel userRolesRel) {
+    public UserRolesRel saveUserRolesRel(UserRolesRel userRolesRel) {
         roleDao.saveUserRolesRel(userRolesRel);
+        return userRolesRel;
     }
 
     @Override

@@ -6,7 +6,7 @@ angular.module('myApp.serv', [])
     .factory('signInSer', ['$http', '$httpParamSerializer', '$q', function ($http, $httpParamSerializer, $q) {
         return {
             login: function (form) {
-                var defer = $q.defer()
+                var defer = $q.defer();
                 var data = $httpParamSerializer(form);
                 $http.post('/signIn', data, {
                     headers: {"Content-Type": "application/x-www-form-urlencoded"}
@@ -23,9 +23,19 @@ angular.module('myApp.serv', [])
     }])
     .factory('mainSer', ['$http', '$httpParamSerializer', '$q', function ($http, $httpParamSerializer, $q) {
         return {
-            getMenu: function (userId) {
+            /*getMenu: function (userId) {
                 var defer = $q.defer()
                 $http.get('/users/getUserMenu',{params:{"userId":userId}}).success(function (data) {
+                    defer.resolve(data);
+                }).error(function (data) {
+                    defer.reject();
+                })
+
+                return defer.promise;
+            },*/
+            getUserRole:function (userId) {
+                var defer = $q.defer()
+                $http.get('/role/getUserRole',{params:{"userId":userId}}).success(function (data) {
                     defer.resolve(data);
                 }).error(function (data) {
                     defer.reject();
@@ -49,8 +59,17 @@ angular.module('myApp.serv', [])
         }
 
     }])
-    .factory('userSer', ['$http', '$httpParamSerializer', '$q', '$log', function ($http, $httpParamSerializer, $q, $log) {
+    .factory('userSer', ['$http', '$httpParamSerializer', '$q', function ($http, $httpParamSerializer, $q) {
         return {
+            getRoleList:function () {
+                var defer = $q.defer();
+                $http.get('/users/getRoleList').success(function (data) {
+                    defer.resolve(data);
+                }).error(function (data) {
+                    defer.reject();
+                });
+                return defer.promise;
+            },
             getManUser: function (userId) {
                 var defer = $q.defer();
                 $http.get('/users/queryUser', {params: {"userId": userId}}).success(function (data) {
@@ -73,3 +92,30 @@ angular.module('myApp.serv', [])
             }
         }
     }])
+    .factory('busiListSer',['$http','$q',function ($http,$q) {
+        return{
+            getBusiList:function (userId) {
+                var defer = $q.defer();
+                $http.get('/busi/listBusi',{params: {"userId": userId}}).success(function (data) {
+                    defer.resolve(data);
+                }).error(function () {
+                    defer.reject();
+                })
+                return defer.promise;
+            }
+        }
+    }])
+    /*.factory('listBusiSer',['$http','$httpParamSerializer','$q',function ($http, $httpParamSerializer,$q) {
+        return{
+            getBusiList:function (userId) {
+                var defer = $q.defer();
+                $http.get('/busi/listBusi',{params: {"userId": userId}}).success(function (data) {
+                    defer.resolve(data);
+                }).error(function () {
+                    defer.reject();
+                })
+                return defer.promise;
+            }
+        }
+
+    }])*/

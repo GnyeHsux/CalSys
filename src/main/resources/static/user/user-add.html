@@ -1,59 +1,100 @@
-<div class="header">
+<div class="sidebar-nav">
+    <ul>
 
-    <h1 class="page-title">新增用户</h1>
-    <li class="menuli"><a ui-sref="main.users" href="">用户列表</a></li>
-    <li class="menuli active">新增</li>
+        <li><a href="#" data-target=".dashboard-menu" class="nav-header" data-toggle="collapse">
+            用户管理<i class="fa fa-collapse"></i></a></li>
+        <li>
+            <ul class="dashboard-menu nav nav-list collapse in">
+                <li class="active"><a ui-sref="main.users" ui-sref-opts="{reload:true}" href="#"><span
+                        class="fa fa-caret-right"></span> 用户查询</a></li>
+            </ul>
+        </li>
 
-</div>
-<div class="main-content">
+        <li data-popover="true" rel="popover" data-placement="right"><a href="javascript:;" data-target=".premium-menu"
+                                                                        class="nav-header collapsed"
+                                                                        data-toggle="collapse">
+            权限管理<i class="fa fa-collapse"></i></a></li>
+        <li>
+            <ul class="premium-menu nav nav-list collapse">
+                <li class="visible-xs visible-sm"><a href="javascript:;"><span class="fa fa-caret-right"></span>权限配置</a>
+                </li>
+            </ul>
+        </li>
 
-    <ul class="nav nav-tabs">
-        <li class="active"><a href="javascript:;">用户信息</a></li>
+        <li data-popover="true" rel="popover" data-placement="right"><a href="javascript:;" data-target=".premium-menu"
+                                                                        class="nav-header collapsed"
+                                                                        data-toggle="collapse">
+            菜单管理<i class="fa fa-collapse"></i></a></li>
+        <li>
+            <ul class="premium-menu nav nav-list collapse">
+                <li class="visible-xs visible-sm"><a href="javascript:;"><span class="fa fa-caret-right"></span>菜单配置</a>
+                </li>
+            </ul>
+        </li>
     </ul>
+</div>
 
-    <div class="">
+<div class="content">
+    <div class="header">
+
+        <h1 class="page-title">新增用户</h1>
+        <li class="menuli"><a ui-sref="main.users" href="">用户列表</a></li>
+        <li class="menuli active">新增</li>
+
+    </div>
+    <div class="main-content">
+
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="javascript:;">用户信息</a></li>
+        </ul>
+
         <div class="">
-            <br>
-            <form id="myForm">
-                <table class="table-condensed myTable">
-                    <tr>
-                        <th width="15%"></th>
-                        <th width="30%"></th>
-                        <th width="15%"></th>
-                        <th width="30%"></th>
-                    </tr>
-                    <tr>
-                        <td>姓名：</td>
-                        <td><input type="text" name="username" class="form-control" ng-model="userFormData.userName"></td>
-                        <td>工号：</td>
-                        <td><input type="text" name="employeeId" class="form-control" ng-model="userFormData.employeeId"></td>
-                    </tr>
-                    <tr>
-                        <td>登录账号：</td>
-                        <td><input type="text" name="userAccount" class="form-control" ng-model="userFormData.userAccount"></td>
-                        <td>密码：</td>
-                        <td><input type="text" name="userPwd" class="form-control" ng-model="userFormData.userPwd"></td>
-                    </tr>
-                    <tr>
-                        <td>手机号：</td>
-                        <td><input type="text" name="phone" class="form-control" ng-model="userFormData.phone"></td>
-                        <td>角色：</td>
-                        <td>
-                            <select class="form-control" name="userRole" ng-model="userFormData.userRole" ng-options="x.id as x.name for x in rolesList">
-                                <!--<option ng-repeat="role in rolesList" value="{{role.id}}">{{role.name}}</option>-->
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                        <td col colspan="2"></td>
-                        <td colspan="2">
-                            <button class="btn btn-primary" ng-click="submitForm()"><i class="fa fa-save"></i> 保存</button>
-                        </td>
-                    </tr>
-                </table>
+            <div class="">
+                <br>
+                <form id="myForm">
+                    <table class="table-condensed myTable">
+                        <tr>
+                            <th width="15%"></th>
+                            <th width="30%"></th>
+                            <th width="15%"></th>
+                            <th width="30%"></th>
+                        </tr>
+                        <tr>
+                            <td>姓名：</td>
+                            <td><input type="text" name="username" class="form-control" ng-model="userFormData.userName"></td>
+                            <td>工号：</td>
+                            <td><input type="text" name="employeeId" class="form-control" ng-model="userFormData.employeeId"></td>
+                        </tr>
+                        <tr>
+                            <td>登录账号：</td>
+                            <td><input type="text" name="userAccount" class="form-control" ng-model="userFormData.userAccount"></td>
+                            <td>密码：</td>
+                            <td><input type="text" name="userPwd" class="form-control" ng-model="userFormData.userPwd"></td>
+                        </tr>
+                        <tr>
+                            <td>手机号：</td>
+                            <td><input type="text" name="phone" class="form-control" ng-model="userFormData.phone"></td>
+                            <td>角色：</td>
+                            <td>
+                                <select class="form-control" name="userRole" ng-model="userFormData.userRole" ng-options="x.id as x.name for x in rolesList">
 
-            </form>
+                                    <!--<option ng-repeat="role in rolesList" value="{{role.id}}">{{role.name}}</option>-->
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            <td col colspan="2"></td>
+                            <td colspan="2">
+                                <button class="btn btn-primary" ng-click="submitForm()"><i class="fa fa-save"></i> 保存</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </form>
+            </div>
         </div>
     </div>
 </div>
+
+

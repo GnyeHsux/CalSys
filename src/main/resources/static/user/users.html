@@ -1,99 +1,141 @@
-<div class="header">
+<div class="sidebar-nav">
+    <ul>
 
-    <h1 class="page-title">用户查询</h1>
+        <li><a href="#" data-target=".dashboard-menu" class="nav-header" data-toggle="collapse">
+            用户管理<i class="fa fa-collapse"></i></a></li>
+        <li>
+            <ul class="dashboard-menu nav nav-list collapse in">
+                <li class="active"><a ui-sref="main.users" ui-sref-opts="{reload:true}" href="#"><span
+                        class="fa fa-caret-right"></span> 用户查询</a></li>
+            </ul>
+        </li>
 
-</div>
-<div class="main-content">
+        <li data-popover="true" rel="popover" data-placement="right"><a href="javascript:;" data-target=".premium-menu"
+                                                                        class="nav-header collapsed"
+                                                                        data-toggle="collapse">
+            权限管理<i class="fa fa-collapse"></i></a></li>
+        <li>
+            <ul class="premium-menu nav nav-list collapse">
+                <li class="visible-xs visible-sm"><a href="javascript:;"><span class="fa fa-caret-right"></span>权限配置</a>
+                </li>
+            </ul>
+        </li>
 
-    <div class="btn-toolbar list-toolbar">
-        <div style="float: left">
-            <button class="btn btn-primary" ui-sref="main.addUser"><i class="fa fa-plus"></i> 新增用户</button>
-        </div>
-        <div style="float: right;">
-            <form class="form-inline" id="myForm">
-                <input type="text" class="form-control" placeholder="请输入用户姓名" name="username" ng-model="queryUsername">
-                <input type="text" class="form-control" placeholder="请输入用户工号" name="employeeId" ng-model="queryEmployeeId">
-                <button class="btn btn-primary" ng-click="submitMsg()">查询</button>
-            </form>
-
-        </div>
-    </div>
-    <table class="table">
-        <thead>
-        <tr>
-            <th>用户id</th>
-            <th>用户名</th>
-            <th>登录账号</th>
-            <th>手机号</th>
-            <th>工号</th>
-            <th>角色</th>
-            <th style="width: 7.5em;"></th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="user in userList">
-            <td>{{user.user_id}}</td>
-            <td>{{user.user_name}}</td>
-            <td>{{user.user_account}}</td>
-            <td>{{user.phone}}</td>
-            <td>{{user.employee_id}}</td>
-            <td>{{user.rolename}}</td>
-            <td>
-                <a href="javascript:;" ui-sref="main.editUser({userId:{{user.user_id}}})"><i class="fa fa-pencil"></i><i>编辑</i></a>
-            </td>
-        </tr>
-        <!--<tr>
-            <td>1</td>
-            <td>林裕美</td>
-            <td>linyumei</td>
-            <td>18775242500</td>
-            <td>0227</td>
-            <td>总经理</td>
-            <td>
-                <a href="javascript:;" ui-sref="main.editUser({userId:2})"><i class="fa fa-pencil"></i><i>编辑</i></a>&nbsp;&nbsp;
-                <a href="" role="button"><i>停用</i></a>
-            </td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>大绍殷</td>
-            <td>dashaone</td>
-            <td>13580114488</td>
-            <td>0327</td>
-            <td>客服1</td>
-            <td>
-                <a href=""><i class="fa fa-pencil"></i><i>编辑</i></a>&nbsp;&nbsp;
-                <a href="" role="button"><i>停用</i></a>
-            </td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>小橘毛</td>
-            <td>xiaojumao</td>
-            <td>15278366609</td>
-            <td>0328</td>
-            <td>客服2</td>
-            <td>
-                <a href="" role="button"><i>启用</i></a>&nbsp;&nbsp;
-                <a href=""><i class="fa fa-pencil"></i><i>编辑</i></a>
-            </td>
-        </tr>-->
-
-        </tbody>
-    </table>
-
-    <ul class="pagination">
-        <li><a href="#">&laquo;</a></li>
-        <li><a href="#">1</a></li>
-        <li><a href="#">&raquo;</a></li>
+        <li data-popover="true" rel="popover" data-placement="right"><a href="javascript:;" data-target=".premium-menu"
+                                                                        class="nav-header collapsed"
+                                                                        data-toggle="collapse">
+            菜单管理<i class="fa fa-collapse"></i></a></li>
+        <li>
+            <ul class="premium-menu nav nav-list collapse">
+                <li class="visible-xs visible-sm"><a href="javascript:;"><span class="fa fa-caret-right"></span>菜单配置</a>
+                </li>
+            </ul>
+        </li>
     </ul>
-
-
-    <footer>
-        <hr>
-        <p>© 2017 <a href="javascript:void(0)" target="_blank">gplynn</a></p>
-    </footer>
 </div>
+
+<div class="content">
+    <div class="header">
+
+        <h1 class="page-title">用户查询</h1>
+
+    </div>
+    <div class="main-content">
+
+        <div class="btn-toolbar list-toolbar">
+            <div style="float: left">
+                <button class="btn btn-primary" ui-sref="main.addUser"><i class="fa fa-plus"></i> 新增用户</button>
+            </div>
+            <div style="float: right;">
+                <form class="form-inline" id="myForm">
+                    <input type="text" class="form-control" placeholder="请输入用户姓名" name="username"
+                           ng-model="queryUsername">
+                    <input type="text" class="form-control" placeholder="请输入用户工号" name="employeeId"
+                           ng-model="queryEmployeeId">
+                    <button class="btn btn-primary" ng-click="submitMsg()">查询</button>
+                </form>
+
+            </div>
+        </div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>用户id</th>
+                <th>用户名</th>
+                <th>登录账号</th>
+                <th>手机号</th>
+                <th>工号</th>
+                <th>角色</th>
+                <th style="width: 7.5em;"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="user in userList">
+                <td>{{user.user_id}}</td>
+                <td>{{user.user_name}}</td>
+                <td>{{user.user_account}}</td>
+                <td>{{user.phone}}</td>
+                <td>{{user.employee_id}}</td>
+                <td>{{user.rolename}}</td>
+                <td>
+                    <a href="javascript:;" ui-sref="main.editUser({userId:{{user.user_id}}})"><i
+                            class="fa fa-pencil"></i><i>编辑</i></a>
+                </td>
+            </tr>
+            <!--<tr>
+                <td>1</td>
+                <td>林裕美</td>
+                <td>linyumei</td>
+                <td>18775242500</td>
+                <td>0227</td>
+                <td>总经理</td>
+                <td>
+                    <a href="javascript:;" ui-sref="main.editUser({userId:2})"><i class="fa fa-pencil"></i><i>编辑</i></a>&nbsp;&nbsp;
+                    <a href="" role="button"><i>停用</i></a>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>大绍殷</td>
+                <td>dashaone</td>
+                <td>13580114488</td>
+                <td>0327</td>
+                <td>客服1</td>
+                <td>
+                    <a href=""><i class="fa fa-pencil"></i><i>编辑</i></a>&nbsp;&nbsp;
+                    <a href="" role="button"><i>停用</i></a>
+                </td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>小橘毛</td>
+                <td>xiaojumao</td>
+                <td>15278366609</td>
+                <td>0328</td>
+                <td>客服2</td>
+                <td>
+                    <a href="" role="button"><i>启用</i></a>&nbsp;&nbsp;
+                    <a href=""><i class="fa fa-pencil"></i><i>编辑</i></a>
+                </td>
+            </tr>-->
+
+            </tbody>
+        </table>
+
+        <ul class="pagination">
+            <li><a href="#">&laquo;</a></li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">&raquo;</a></li>
+        </ul>
+
+
+        <footer>
+            <hr>
+            <p>© 2017 <a href="javascript:void(0)" target="_blank">gplynn</a></p>
+        </footer>
+    </div>
+</div>
+
 
 
 
