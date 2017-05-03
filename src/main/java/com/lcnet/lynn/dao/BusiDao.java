@@ -10,4 +10,6 @@ import java.util.List;
 public interface BusiDao {
 
     List<Record> getMyBusiList(String userId);
+
+    List<Record> getBusiDetail(String busiId);
 }

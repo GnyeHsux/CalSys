@@ -102,3 +102,8 @@
 .dropdown:hover{
     background-color: #4d5b76;
 }
+.detail_card{
+    margin-bottom: 20px;
+    font-style: normal;
+    line-height: 1.42857143;
+}

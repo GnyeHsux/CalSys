@@ -105,7 +105,7 @@ angular.module('myApp.serv', [])
             }
         }
     }])
-    /*.factory('listBusiSer',['$http','$httpParamSerializer','$q',function ($http, $httpParamSerializer,$q) {
+    .factory('editBussiness',['$http','$q',function ($http,$q) {
         return{
             getBusiList:function (userId) {
                 var defer = $q.defer();
@@ -117,5 +117,4 @@ angular.module('myApp.serv', [])
                 return defer.promise;
             }
         }
-
-    }])*/
+    }])

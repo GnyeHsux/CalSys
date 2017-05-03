@@ -25,4 +25,10 @@ public class BusiController {
         List<Record> myBusiList = busiService.getMyBusiList(userId);
         return  myBusiList;
     }
+
+    @RequestMapping(value = "/busiDetail")
+    public List<Record> showOrEditBusis(String busiId){
+        List<Record> busiDetail = busiService.getBusiDetail(busiId);
+        return busiDetail;
+    }
 }

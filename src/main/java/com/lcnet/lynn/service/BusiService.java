@@ -11,4 +11,6 @@ import java.util.List;
 public interface BusiService {
 
     List<Record> getMyBusiList(String userId);
+
+    List<Record> getBusiDetail(String busiId);
 }

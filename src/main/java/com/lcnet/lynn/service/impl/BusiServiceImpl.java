@@ -23,4 +23,9 @@ public class BusiServiceImpl implements BusiService {
     public List<Record> getMyBusiList(String userId) {
         return busiDao.getMyBusiList(userId);
     }
+
+    @Override
+    public List<Record> getBusiDetail(String busiId) {
+        return busiDao.getBusiDetail(busiId);
+    }
 }

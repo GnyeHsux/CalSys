@@ -74,5 +74,25 @@ myApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $
                 }
             }
         })
+        .state('main.editBusi',{
+            url:"/editBusi?busiId",
+            cache:"false",
+            views:{
+                'content':{
+                    template:"bussiness/busiDetail.html",
+                    controller:'busiDetailCtrl'
+                }
+            }
+        })
+        .state('main.busiDetail',{
+            url:"/busiDetail?busiId",
+            cache:"false",
+            views:{
+                'content':{
+                    template:"bussiness/busiDetail.html",
+                    controller:'busiDetailCtrl'
+                }
+            }
+        })
 }]);
 

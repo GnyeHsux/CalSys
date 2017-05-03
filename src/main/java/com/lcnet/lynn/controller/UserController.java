@@ -114,11 +114,14 @@ public class UserController {
                 //编辑
                 manUsers.setUserId(Integer.parseInt(userId));
                 Record oldManUser = userService.queryUser(userId);
-                String oldEmployeeId = userForm.getEmployeeId();
-                if (! oldEmployeeId.equals(oldManUser.getString("employee_id"))){
-                    map.put("code","0");
-                    map.put("msg","工号已存在");
-                    return map;
+                String newEmployeeId = userForm.getEmployeeId();
+                if (! newEmployeeId.equals(oldManUser.getString("employee_id"))){
+                    Boolean boo = userService.checkEmployeeId(userForm.getEmployeeId());
+                    if (boo){
+                        map.put("code","0");
+                        map.put("msg","工号已存在");
+                        return map;
+                    }
                 }
                 manUsers.setEmployeeId(userForm.getEmployeeId());
                 userService.updateUser(manUsers);

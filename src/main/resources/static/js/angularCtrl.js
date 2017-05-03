@@ -50,8 +50,8 @@ angular.module('myApp.ctrl', [])
                     $rootScope.$state.go('main.listBusi');
                 }
             }else {
-                alert("获取用户菜单失败");
-                $rootScope.$state.go('signIn');
+                /*alert("获取用户菜单失败");
+                $rootScope.$state.go('signIn');*/
             }
         })
 
@@ -74,6 +74,14 @@ angular.module('myApp.ctrl', [])
             },function () {
                 $scope.userList = [];
             })
+        }
+        
+        $scope.showSubMenuWrap = function ($event) {
+            console.log(this)
+            console.log($event);
+            console.log($event.target);
+            console.log($event.target.nextSibling)
+
         }
 
     }])
@@ -145,9 +153,13 @@ angular.module('myApp.ctrl', [])
         $scope.submitMsg = function () {
             var pro = userListSer.listBusiSer.getBusiList($rootScope.loginUserId);
             pro.then(function (data) {
+                console.log(data)
                 $scope.busiList = data;
             },function () {
                 $scope.busiList = [];
             })
         }
+    }])
+    .controller('busiDetailCtrl', ['rootScope','$scope', function ($rootScope,$scope) {
+        $scope.nihao = "nihao";
     }])

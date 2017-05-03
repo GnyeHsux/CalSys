@@ -40,4 +40,22 @@ public class BusiDaoImpl extends BaseDaoImpl implements BusiDao {
         }
         return null;
     }
+
+    @Override
+    public List<Record> getBusiDetail(String busiId) {
+        String str = this.getDao(fileName).sqls().get("getBusiDetail");
+        Sql sql = Sqls.queryRecord(str);
+        StringBuffer sb = new StringBuffer();
+        sql.params().set("busiId",busiId);
+        if (! StringUtil.isEmpty(sb.toString())){
+            sql.setCondition(Cnd.wrap(sb.toString()));
+        }
+
+        this.getDao().execute(sql);
+        List<Record> records = sql.getList(Record.class);
+        if (records != null && records.size()>0){
+            return records;
+        }
+        return null;
+    }
 }
